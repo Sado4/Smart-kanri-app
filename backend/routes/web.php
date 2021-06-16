@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,3 +17,5 @@ Route::get('/', function () {
     logger('welcome route.');
     return view('welcome');
 });
+
+// Route::get('sample', 'SectorController@index');
