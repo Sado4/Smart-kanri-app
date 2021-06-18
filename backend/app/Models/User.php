@@ -6,6 +6,26 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
+class User extends Model
+{
+    //belongsTo設定
+    public function shop()
+    {
+        return $this->belongsTo('App\Models\Shop');
+    }
+
+    public function position()
+    {
+        return $this->belongsTo('App\Models\Position');
+    }
+
+    public function visit_histories()
+    {
+        return $this->hasMany('App\Models\VisitHistory');
+    }
+}
+
 class User extends Authenticatable
 {
     use Notifiable;

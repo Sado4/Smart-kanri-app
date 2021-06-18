@@ -17,10 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('top', 'TopController@index');
-Route::get('signup', 'SignUpController@index');
-Route::get('login', 'LoginController@index');
-
 Auth::routes();
+Route::get('top', 'TopController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');

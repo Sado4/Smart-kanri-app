@@ -6,5 +6,5 @@
 
 @section('content')
 <h1>{{ $top }}</h1>
-<a href="http://127.0.0.1:8080/signup">無料ユーザー登録</a>
+<a href="http://127.0.0.1:8080/register">無料ユーザー登録</a>
 @endsection

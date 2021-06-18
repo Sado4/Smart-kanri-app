@@ -9,9 +9,13 @@ class Customer extends Model
     //顧客IDが自動増分されないように
     public $incrementing = false;
 
-    public function profile()
+    public function shop()
     {
-        // Profileモデルのデータを引っ張ってくる
-        return $this->hasOne('App\profile');
+        return $this->belongsTo('App\Models\Shop');
+    }
+
+    public function visit_histories()
+    {
+        return $this->hasMany('App\Models\VisitHistory');
     }
 }
