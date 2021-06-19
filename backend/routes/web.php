@@ -17,7 +17,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::middleware('verified')->group(function () {
+    // 本登録ユーザーだけ表示できるページ
+    Route::get('verified',  function () {
+        return '本登録が完了してます！';
+    });
+});
+
+Auth::routes(['verify' => true]);
 Route::get('top', 'TopController@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/register/setup', 'RegisterSetupController@index')->name('setup');
+Route::get('/register/setup/join', 'RegisterSetupJoinController@index');
+Route::get('/register/setup/new', 'RegisterSetupNewController@index');
+Route::get('/register/completed', 'RegisterCompletedController@index');
+Route::get('/password/changed', 'PasswordChangedController@index');
+Route::get('/admin', 'AdminController@index');
+// Route::get('/admin', 'AdminID?Controller@index');
+Route::get('/admin/visits', 'AdminVisitsController@index');
+// Route::get('/admin/visits', 'AdminVisitsID?Controller@index');
+Route::get('/admin/settings/profile', 'AdminSettingsProfileController@index');
+Route::get('/admin/settings/shop', 'AdminSettingsShopController@index');
+Route::get('/admin/settings/staff', 'AdminSettingsStaffController@index');
+Route::get('/admin/settings/menu', 'AdminSettingsMenuController@index');
+

@@ -7,26 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 
-class User extends Model
-{
-    //belongsTo設定
-    public function shop()
-    {
-        return $this->belongsTo('App\Models\Shop');
-    }
-
-    public function position()
-    {
-        return $this->belongsTo('App\Models\Position');
-    }
-
-    public function visit_histories()
-    {
-        return $this->hasMany('App\Models\VisitHistory');
-    }
-}
-
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -56,4 +37,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //belongsTo設定
+    public function shop()
+    {
+        return $this->belongsTo('App\Models\Shop');
+    }
+
+    public function position()
+    {
+        return $this->belongsTo('App\Models\Position');
+    }
+
+    public function visit_histories()
+    {
+        return $this->hasMany('App\Models\VisitHistory');
+    }
 }
