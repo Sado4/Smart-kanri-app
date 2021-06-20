@@ -9,6 +9,6 @@ class TopController extends Controller
 {
     public function index()
     {
-        return view('top', ['top' => 'Topページ!!']);
+        return view('top');
     }
 }
