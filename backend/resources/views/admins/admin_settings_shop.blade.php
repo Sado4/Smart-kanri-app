@@ -13,7 +13,17 @@
                         {{ session('status') }}
                     </div>
                     @endif
-                    <p>店舗名</p>
+                    <div>
+                        <h4>店舗名の設定</h4>
+                    </div>
+                    <form>
+                        <div>
+                            <input type="text" placeholder="店舗名">
+                        </div>
+                    </form>
+                    <div>
+                        <button><span>変更を保存</span></button>
+                    </div>
                 </div>
             </div>
         </div>

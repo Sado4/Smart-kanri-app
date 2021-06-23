@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">プロフィール設定</div>
+                <div class="card-header">
+                    <h4>スタッフ関連設定</h4>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,23 +15,17 @@
                         {{ session('status') }}
                     </div>
                     @endif
-                    <form>
+                    <div>
                         <div>
-                            <input type="text" placeholder="👦 test01">
+                            <button><span>スタッフ一覧</span></button>
                         </div>
-                    </form>
-                    <div>
-                        <button><span>変更を保存</span></button>
-                    </div>
-                    <div>
-                        <h5>メールアドレス</h5>
                         <div>
-                            <p>tarou@gmail.com</p>
+                            <button><span>所属申請</span></button>
                         </div>
                     </div>
 
                     <div>
-                        <button><a href="#">ログアウトする</a></button>
+                        <h4>所属申請一覧</h4>
                     </div>
                 </div>
             </div>

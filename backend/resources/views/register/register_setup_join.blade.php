@@ -13,8 +13,16 @@
                         {{ session('status') }}
                     </div>
                     @endif
-                    <p>店舗名を入力してください</p>
-                    <a href="#">検索する</a>
+
+                    <form>
+                        <p>管理者より店舗名を教えてもらいましょう</p>
+                        <input type="text" placeholder="店舗名を入力してください" size="30">
+                    </form>
+
+                    <div>
+                        <a href="#">検索する</a><br>
+                        <a href="http://127.0.0.1:8080/register/setup/">戻る</a>
+                    </div>
                 </div>
             </div>
         </div>

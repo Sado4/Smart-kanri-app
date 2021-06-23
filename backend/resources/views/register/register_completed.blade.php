@@ -14,6 +14,11 @@
                     </div>
                     @endif
                     <p>新しいアカウントでログインできるようになりました。</p>
+                    <div class="col-md-6 offset-md-4">
+                        <a href="http://127.0.0.1:8080/register/setup"><button type="submit" class="btn btn-primary">
+                                {{ __('セットアップを始める') }}
+                            </button></a>
+                    </div>
                 </div>
             </div>
         </div>

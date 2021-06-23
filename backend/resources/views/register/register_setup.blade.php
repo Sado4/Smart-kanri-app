@@ -14,9 +14,19 @@
                     </div>
                     @endif
 
-                    <a href="http://127.0.0.1:8080/register/setup/new">店舗のセットアップへ</a>
-                    <br><br>
-                    <a href="http://127.0.0.1:8080/register/setup/join">作成済の店舗に所属する</a>
+                    <div>
+                        <p>店舗のセットアップを行って利用を開始してください。</p>
+                    </div>
+
+                    <div>
+                        <a href="http://127.0.0.1:8080/register/setup/new">店舗のセットアップへ</a>
+                    </div>
+                    <br>
+
+                    <div>
+                        <p>既に他のスタッフが店舗を作成していますか？</p>
+                        <a href="http://127.0.0.1:8080/register/setup/join">作成済の店舗に所属する</a>
+                    </div>
                 </div>
             </div>
         </div>
