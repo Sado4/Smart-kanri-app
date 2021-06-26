@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterSetupNewController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -27,12 +28,14 @@ Route::middleware('verified')->group(function () {
 Auth::routes(['verify' => true]);
 Route::get('top', 'TopController@index');
 
-Route::get('/register/setup', 'RegisterSetupController@index')->name('setup')->middleware('verified');
+Route::get('/register/setup', 'RegisterSetupController@index')->name('setup')->middleware('auth')->middleware('verified');
 Route::get('/register/setup/join', 'RegisterSetupJoinController@index')->middleware('verified');
-Route::get('/register/setup/new', 'RegisterSetupNewController@index')->middleware('verified');
-Route::get('/register/setup/new', 'RegisterSetupNewController@pull_sector')->middleware('verified');
+Route::get('/register/setup/new', 'RegisterSetupNewController@index')->middleware('auth')->middleware('verified');
+Route::get('/register/setup/new', 'RegisterSetupNewController@show')->middleware('verified');
 Route::get('/register/completed', 'RegisterCompletedController@index')->middleware('verified');
 Route::get('/password/changed', 'PasswordChangedController@index');
+
+Route::post('/admin', 'RegisterSetupNewController@create');
 Route::get('/admin', 'AdminController@index')->middleware('verified');
 // Route::get('/admin', 'AdminID?Controller@index');
 Route::get('/admin/visits', 'AdminVisitsController@index')->middleware('verified');

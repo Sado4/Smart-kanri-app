@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Auth;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -45,15 +46,10 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
-    {
-        // TokenMismatchException 例外発生時
-        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
-            // ログアウトリクエスト時は、強制的にログアウト
-            if ($request->is('logout')) {
-                Auth::logout();
-            }
-        }
-        return parent::render($request, $exception);
-    }
+    // public function render($request, Throwable $exception)
+    // {
+    //     if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
+    //         return redirect()->route('login');
+    //     }
+    // }
 }

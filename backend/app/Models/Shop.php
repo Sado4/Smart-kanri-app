@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shop extends Model
 {
-    //hasMany設定
+    protected $fillable = ['name', 'sector_id'];
+
+    //リレーション設定
     public function users()
     {
         return $this->hasMany('App\Models\User');
