@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class AdminVisitsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('verified');
+    }
+    
     public function index()
     {
         return view('admins/admin_visits');

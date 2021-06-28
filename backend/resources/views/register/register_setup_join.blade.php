@@ -14,9 +14,10 @@
                     </div>
                     @endif
 
-                    <form>
+                    <form action="{{ url('/admin') }}" method="POST">
+                        @csrf
                         <p>管理者より店舗名を教えてもらいましょう</p>
-                        <input type="text" placeholder="店舗名を入力してください" size="30">
+                        <input type="text" name="shop_name" placeholder="所属する店舗名を入力" size="30">
                     </form>
 
                     <div>

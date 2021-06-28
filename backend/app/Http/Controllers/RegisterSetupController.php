@@ -20,6 +20,11 @@ class RegisterSetupController extends Controller
      */
     public function index()
     {
-        return view('register/register_setup');
+        return view('register.register_setup');
+    }
+
+    public function __construct()
+    {
+        $this->middleware('verified');
     }
 }
