@@ -33,21 +33,23 @@
                             <p>業種を選んでください</p>
                             <div>
                                 <select name="sector_id">
-                                    <option value="{{ $value['id'] }}">
-                            {{ $value['name'] }}
-                            </option>
-                            </select>
+                                    @foreach($sectors as $sector)
+                                    <option value="{{ $sector->id }}">
+                                        {{ $sector->name }}
+                                    </option>
+                                    @endforeach
+                                </select>
 
+                            </div>
                         </div>
-                </div>
 
-                <div>
-                    <span>③確認</span>
-                    <div>
-                        <h6>セットアップ完了です。</h6>
-                        <p>※自動で料金が発生することはありません。</p>
-                        <input type="submit" value="店舗作成">
-                    </div>
+                        <div>
+                            <span>③確認</span>
+                            <div>
+                                <h6>セットアップ完了です。</h6>
+                                <p>※自動で料金が発生することはありません。</p>
+                                <input type="submit" value="店舗作成">
+                            </div>
                     </form>
                 </div>
             </div>

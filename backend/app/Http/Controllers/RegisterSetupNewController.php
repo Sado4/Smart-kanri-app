@@ -23,8 +23,8 @@ class RegisterSetupNewController extends Controller
     public function show()
     {
         $sectors = Sector::all();
-        $value = $sectors->find(1);
-        return view('register.register_setup_new', compact('value'));
+        // $value = $sectors->find(1);
+        return view('register.register_setup_new', compact('sectors'));
     }
 
     public function postCreate(CreateShopRequest $request)
