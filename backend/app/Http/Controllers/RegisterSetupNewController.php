@@ -18,7 +18,7 @@ class RegisterSetupNewController extends Controller
     public function create()
     {
         $sectors = Sector::all();
-        // $value = $sectors->find(1);
+        // $data = $request->all();
         return view('register.register_setup_new', compact('sectors'));
     }
 
@@ -32,13 +32,8 @@ class RegisterSetupNewController extends Controller
     //     return view('register.register_setup_new')->with($data);
     // }
 
-    //     request型で送られてくる
-    public function store(Request $request)
+    public function store(CreateShopRequest $request)
     {
-        // $data = [
-        //     'msg'  => '店舗名を入力してください',
-        // ];
-
         $shop = new Shop();
         $shop->name = $request->shop_name;
         $shop->sector_id = $request->sector_id;

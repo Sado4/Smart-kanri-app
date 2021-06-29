@@ -22,19 +22,15 @@ Route::middleware('verified');
 Route::group(['middleware' => ['web']], function () {
     Route::post('/register/setup/new', 'RegisterSetupNewController@postCreate');
 });
-    // 本登録ユーザーだけ表示できるページ
-    // Route::get('verified',  function () {
-    //     return '本登録が完了してます！';
-    // });
+
 Auth::routes(['verify' => true]);
 
 
 Route::get('top', 'TopController@index');
 
 Route::get('/register/setup', 'RegisterSetupController@index');
-Route::get('/register/setup/join', 'RegisterSetupJoinController@index');
 Route::get('/register/setup/new', 'RegisterSetupNewController@create');
-// Route::post('/register/setup/new', 'RegisterSetupNewController@postCreate');
+Route::get('/register/setup/join', 'RegisterSetupJoinController@index');
 Route::get('/register/completed', 'RegisterCompletedController@index');
 
 Route::get('/password/changed', 'PasswordChangedController@index');

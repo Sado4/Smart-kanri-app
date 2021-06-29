@@ -31,8 +31,8 @@ class CreateShopRequest extends FormRequest
     public function messages()
     {
         return [
-            "required" => "必須項目です。",
-            "opinion.max" => "50文字以内で入力してください。"
+            "required" => "店舗名は必須項目です。",
+            "max" => "店舗名は50文字以下で入力して下さい"
         ];
     }
 }
