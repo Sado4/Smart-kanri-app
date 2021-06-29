@@ -33,8 +33,7 @@ Route::get('top', 'TopController@index');
 
 Route::get('/register/setup', 'RegisterSetupController@index');
 Route::get('/register/setup/join', 'RegisterSetupJoinController@index');
-Route::get('/register/setup/new', 'RegisterSetupNewController@index');
-Route::get('/register/setup/new', 'RegisterSetupNewController@show');
+Route::get('/register/setup/new', 'RegisterSetupNewController@create');
 // Route::post('/register/setup/new', 'RegisterSetupNewController@postCreate');
 Route::get('/register/completed', 'RegisterCompletedController@index');
 
