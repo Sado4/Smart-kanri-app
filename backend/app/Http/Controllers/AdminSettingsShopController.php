@@ -13,6 +13,6 @@ class AdminSettingsShopController extends Controller
     
     public function index()
     {
-        return view('admins/admin_settings_shop');
+        return view('admins.admin_settings_shop');
     }
 }

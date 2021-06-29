@@ -15,17 +15,16 @@
                     @endif
                     <form action="{{ url('/admin') }}" method="POST">
                         @csrf
-                        <!-- /** バリデーションエラーをすべて表示 */ -->
-                        @if(count($errors) > 0)
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                        @endif
                         <div>
                             <span>①サロン名入力</span>
                             <p>店舗名を教えてください</p>
+                            @if(count($errors) > 0)
+                            <ul>
+                                @error('shop_name')
+                                <li>{{ $message }}</li>
+                                @enderror
+                                @endif
+                            </ul>
                             <input type="text" name="shop_name" value="{{ old('shop_name') }}" placeholder="店舗名">
                         </div>
                         <div>

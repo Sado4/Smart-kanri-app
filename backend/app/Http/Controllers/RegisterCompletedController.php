@@ -13,6 +13,6 @@ class RegisterCompletedController extends Controller
 
     public function index()
     {
-        return view('register/register_completed');
+        return view('register.register_completed');
     }
 }

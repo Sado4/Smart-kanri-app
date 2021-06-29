@@ -13,6 +13,6 @@ class AdminVisitsController extends Controller
     
     public function index()
     {
-        return view('admins/admin_visits');
+        return view('admins.admin_visits');
     }
 }

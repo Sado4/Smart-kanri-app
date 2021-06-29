@@ -18,13 +18,14 @@ class RegisterSetupController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function __construct()
+    {
+        $this->middleware('verified');
+    }
+    
     public function index()
     {
         return view('register.register_setup');
     }
 
-    public function __construct()
-    {
-        $this->middleware('verified');
-    }
 }
