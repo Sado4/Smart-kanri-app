@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sector;
 use App\Models\Shop;
+use App\Models\User;
 use App\Http\Requests\CreateShopRequest;
 
 class RegisterSetupNewController extends Controller
@@ -13,29 +14,23 @@ class RegisterSetupNewController extends Controller
     {
         $this->middleware('verified');
     }
-    
-    public function index()
-    {
-        // $msg = '店舗名を教えてください';
-        return view('register.register_setup_new');
-    }
 
-    public function show()
+    public function create()
     {
         $sectors = Sector::all();
         // $value = $sectors->find(1);
         return view('register.register_setup_new', compact('sectors'));
     }
 
-    public function postCreate(CreateShopRequest $request)
-    {
+    // public function postCreate(CreateShopRequest $request)
+    // {
         /**
          * 拡張クラスに書いたルールでリクエストが自動的に検証される
 　　    * バリデーションをパスするとこの後の処理が実行される 
 　　    */
-        $data = $request->all();
-        return view('register.register_setup_new')->with($data);
-    }
+    //     $data = $request->all();
+    //     return view('register.register_setup_new')->with($data);
+    // }
 
     //     request型で送られてくる
     public function store(Request $request)

@@ -13,6 +13,6 @@ class RegisterSetupJoinController extends Controller
 
     public function index()
     {
-        return view('register/register_setup_join');
+        return view('register.register_setup_join');
     }
 }

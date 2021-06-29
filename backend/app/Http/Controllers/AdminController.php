@@ -17,9 +17,9 @@ class AdminController extends Controller
         return view('admins.admin');
     }
 
-    public function show($id)
-    {
-        $shop = Shop::find($id);
-        return view('admins.admin', compact('shop'));
-    }
+    // public function show($id)
+    // {
+    //     $shop = Shop::find($id);
+    //     return view('admins.admin', compact('shop'));
+    // }
 }

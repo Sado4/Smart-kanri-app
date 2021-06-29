@@ -13,6 +13,6 @@ class AdminSettingsMenuController extends Controller
 
     public function index()
     {
-        return view('admins/admin_settings_menu');
+        return view('admins.admin_settings_menu');
     }
 }

@@ -13,6 +13,6 @@ class AdminSettingsStaffController extends Controller
     
     public function index()
     {
-        return view('admins/admin_settings_staff');
+        return view('admins.admin_settings_staff');
     }
 }
