@@ -14,30 +14,26 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::middleware('verified');
-Route::group(['middleware' => ['web']], function () {
-    Route::post('/register/setup/new', 'RegisterSetupNewController@postCreate');
-});
 
 Auth::routes(['verify' => true]);
 
 
-Route::get('top', 'TopController@index');
+Route::get('/', 'IndexController@index');
+Route::get('/privacy', 'PrivacyController@index');
+Route::get('/terms', 'TermsController@index');
 
 Route::get('/register/setup', 'RegisterSetupController@index');
 Route::get('/register/setup/new', 'RegisterSetupNewController@create');
-Route::get('/register/setup/join', 'RegisterSetupJoinController@index');
+Route::get('/register/setup/join', 'RegisterSetupJoinController@create');
 Route::get('/register/completed', 'RegisterCompletedController@index');
 
 Route::get('/password/changed', 'PasswordChangedController@index');
 
-Route::get('/admin', 'AdminController@index');
-Route::get('/admin/{id}', 'AdminController@show');
 Route::post('/admin', 'RegisterSetupNewController@store');
+Route::get('/admin/{id}', 'AdminController@index')->name('admin');
+Route::post('/admin/{id}', 'AdminController@store');
+// Route::put('/admin', 'RegisterSetupNewController@update');
 
 // Route::get('/admin', 'AdminID?Controller@index');
 Route::get('/admin/visits', 'AdminVisitsController@index');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shop;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -12,14 +13,20 @@ class AdminController extends Controller
         $this->middleware('verified');
     }
 
-    public function index()
+    public function index(Request $request, $id)
     {
+        $user = User::find(1);
+        $user->shop_id = $id;
+        $user->save();
         return view('admins.admin');
     }
 
-    // public function show($id)
+    // public function store(Request $request, $id)
     // {
-    //     $shop = Shop::find($id);
-    //     return view('admins.admin', compact('shop'));
+    //     ユーザーの更新
+    //     $request->id;
+    //     $user = User::all();
+    //     $user->shop_id = $id->id;
+    //     $user->save();
     // }
 }

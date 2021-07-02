@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Sector;
 use App\Models\Shop;
@@ -17,27 +18,25 @@ class RegisterSetupNewController extends Controller
 
     public function create()
     {
+        $users = User::all();
+        // 業種の取得
         $sectors = Sector::all();
-        // $data = $request->all();
         return view('register.register_setup_new', compact('sectors'));
     }
 
-    // public function postCreate(CreateShopRequest $request)
-    // {
-        /**
-         * 拡張クラスに書いたルールでリクエストが自動的に検証される
-　　    * バリデーションをパスするとこの後の処理が実行される 
-　　    */
-    //     $data = $request->all();
-    //     return view('register.register_setup_new')->with($data);
-    // }
-
-    public function store(CreateShopRequest $request)
+    public function store(CreateShopRequest $request, $id)
     {
+        //ユーザの特定
+        $user = User::find($id);
+        // 店舗の作成
         $shop = new Shop();
         $shop->name = $request->shop_name;
         $shop->sector_id = $request->sector_id;
         $shop->save();
-        return redirect('/admin');
+        // 専用の店舗画面に遷移
+        return redirect(route('admin', [
+            'id' => $shop->id,
+            // 'id' => $user->id,
+        ]));
     }
 }
