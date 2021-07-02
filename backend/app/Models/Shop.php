@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shop extends Model
 {
+    //ユーザー入力値nameとsector_idはホワイトリスト
     protected $fillable = ['name', 'sector_id'];
 
     //リレーション設定

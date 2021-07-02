@@ -13,7 +13,9 @@
                         {{ session('status') }}
                     </div>
                     @endif
-                    <form action="{{ url('/admin') }}" method="POST">
+                    @foreach($users as $user)
+                    <form action="/admin/{{ $user->id }}" method="POST">
+                        @endforeach
                         @csrf
                         <div>
                             <span>①サロン名入力</span>
