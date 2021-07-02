@@ -32,7 +32,7 @@ Route::get('/password/changed', 'PasswordChangedController@index');
 
 Route::post('/admin', 'RegisterSetupNewController@store');
 Route::get('/admin/{id}', 'AdminController@index')->name('admin');
-Route::post('/admin/{id}', 'AdminController@store');
+Route::post('/admin/{id}', 'AdminController@index');
 // Route::put('/admin', 'RegisterSetupNewController@update');
 
 // Route::get('/admin', 'AdminID?Controller@index');

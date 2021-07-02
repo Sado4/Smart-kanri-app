@@ -18,16 +18,16 @@ class RegisterSetupNewController extends Controller
 
     public function create()
     {
-        $users = User::all();
+        // $users = User::all();
         // 業種の取得
         $sectors = Sector::all();
         return view('register.register_setup_new', compact('sectors'));
     }
 
-    public function store(CreateShopRequest $request, $id)
+    public function store(CreateShopRequest $request)
     {
         //ユーザの特定
-        $user = User::find($id);
+        // $user = User::find($id);
         // 店舗の作成
         $shop = new Shop();
         $shop->name = $request->shop_name;
