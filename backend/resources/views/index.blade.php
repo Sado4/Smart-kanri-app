@@ -7,7 +7,7 @@
     <meta name="description" content="顧客管理システムでスマートに顧客を管理できるWebアプリケーションの「Smart-管理」" />
     <meta name="author" content="@derasado" />
     <title>Smart-管理</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('/favicon.ico')}}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('/favicon.ico') }}" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->

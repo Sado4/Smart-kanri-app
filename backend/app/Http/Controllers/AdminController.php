@@ -15,9 +15,9 @@ class AdminController extends Controller
 
     public function index(Request $request, $id)
     {
-        $user = User::find(1);
-        $user->shop_id = $id;
-        $user->save();
+        // $user = User::find(1);
+        // $user->shop_id = $id;
+        // $user->save();
         return view('admins.admin');
     }
 
