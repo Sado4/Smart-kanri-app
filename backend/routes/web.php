@@ -26,18 +26,16 @@ Route::get('/terms', 'TermsController@index');
 Route::get('/register/setup', 'RegisterSetupController@index');
 Route::get('/register/setup/new', 'RegisterSetupNewController@create');
 Route::get('/register/setup/join', 'RegisterSetupJoinController@create');
+Route::post('/register/setup/join', 'RegisterSetupJoinController@getView');
 Route::get('/register/completed', 'RegisterCompletedController@index');
 
 Route::get('/password/changed', 'PasswordChangedController@index');
 
 Route::post('/admin', 'RegisterSetupNewController@store');
-Route::get('/admin/{id}', 'AdminController@index')->name('admin');
-Route::post('/admin/{id}', 'AdminController@index');
-// Route::put('/admin', 'RegisterSetupNewController@update');
+Route::get('/admin', 'AdminController@index')->name('admin');
 
-// Route::get('/admin', 'AdminID?Controller@index');
 Route::get('/admin/visits', 'AdminVisitsController@index');
-// Route::get('/admin/visits', 'AdminVisitsID?Controller@index');
+
 Route::get('/admin/settings/profile', 'AdminSettingsProfileController@index');
 Route::get('/admin/settings/shop', 'AdminSettingsShopController@index');
 Route::get('/admin/settings/staff', 'AdminSettingsStaffController@index');

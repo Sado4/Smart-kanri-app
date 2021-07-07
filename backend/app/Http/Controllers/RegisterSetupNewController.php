@@ -18,25 +18,33 @@ class RegisterSetupNewController extends Controller
 
     public function create()
     {
-        // $users = User::all();
         // 業種の取得
         $sectors = Sector::all();
-        return view('register.register_setup_new', compact('sectors'));
+
+        $user = Auth::user();
+        // ユーザーは既に店舗に所属していたら、ログイン後に所属している店舗画面にリダイレクト
+        if ($user->shop_id === NULL) {
+            return view('register.register_setup_new', compact('sectors'));
+        } else {
+            return redirect()->route('admin');
+        }
     }
 
     public function store(CreateShopRequest $request)
     {
-        //ユーザの特定
-        // $user = User::find($id);
         // 店舗の作成
         $shop = new Shop();
         $shop->name = $request->shop_name;
         $shop->sector_id = $request->sector_id;
         $shop->save();
+        
+        // ログインしているユーザーの特定
+        $user = Auth::user();
+        $user->shop_id = $shop->id;
+        $user->position_id = 1;
+        $user->save();
+
         // 専用の店舗画面に遷移
-        return redirect(route('admin', [
-            'id' => $shop->id,
-            // 'id' => $user->id,
-        ]));
+        return redirect()->route('admin');
     }
 }
