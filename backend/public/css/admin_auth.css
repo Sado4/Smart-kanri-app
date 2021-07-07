@@ -2115,8 +2115,8 @@ textarea.form-control {
 
 .form-inline {
   /* display: flex; */
-  flex-flow: row wrap;
-  align-items: center;
+  /* flex-flow: row wrap; */
+  /* align-items: center; */
 }
 
 .form-inline .form-check {
@@ -2126,16 +2126,16 @@ textarea.form-control {
 @media (min-width: 576px) {
   .form-inline label {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     /* justify-content: center; */
     /* margin-bottom: 0; */
   }
   .form-inline .form-group {
     /* display: flex; */
     flex: 0 0 auto;
-    flex-flow: row wrap;
-    align-items: center;
-    margin-bottom: 0;
+    /* flex-flow: row wrap; */
+    /* align-items: center; */
+    /* margin-bottom: 0; */
   }
   .form-inline .form-control {
     display: inline-block;
@@ -6378,8 +6378,6 @@ a.bg-dark:hover, a.bg-dark:focus, button.bg-dark:hover, button.bg-dark:focus {
 @media (min-width: 768px) {
   .d-md-none {
     display: none !important;
-    display: flex !important;
-    ;
   }
   .d-md-inline {
     display: inline !important;
