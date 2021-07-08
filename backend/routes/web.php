@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterSetupJoinController;
 use App\Http\Controllers\RegisterSetupNewController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,8 @@ Route::get('/terms', 'TermsController@index');
 Route::get('/register/setup', 'RegisterSetupController@index');
 Route::get('/register/setup/new', 'RegisterSetupNewController@create');
 Route::get('/register/setup/join', 'RegisterSetupJoinController@create');
-Route::post('/register/setup/join', 'RegisterSetupJoinController@getView');
+Route::post('/register/setup/join', 'RegisterSetupJoinController@searchShop');
+Route::post('/register/staff/join', 'RegisterSetupJoinController@updateStaff')->name('staff.join');
 Route::get('/register/completed', 'RegisterCompletedController@index');
 
 Route::get('/password/changed', 'PasswordChangedController@index');
@@ -41,4 +43,3 @@ Route::get('/admin/settings/shop', 'AdminSettingsShopController@index');
 Route::get('/admin/settings/staff', 'AdminSettingsStaffController@index');
 Route::get('/admin/settings/staff/request', 'AdminSettingsStaffRequestController@index');
 Route::get('/admin/settings/menu', 'AdminSettingsMenuController@index');
-

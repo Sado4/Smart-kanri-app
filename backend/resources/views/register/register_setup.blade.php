@@ -19,13 +19,13 @@
                     </div>
 
                     <div>
-                        <a href="http://127.0.0.1:8080/register/setup/new">店舗のセットアップへ</a>
+                        <a href="/register/setup/new">店舗のセットアップへ</a>
                     </div>
                     <br>
 
                     <div>
                         <p>既に他のスタッフが店舗を作成していますか？</p>
-                        <a href="http://127.0.0.1:8080/register/setup/join">作成済の店舗に所属する</a>
+                        <a href="/register/setup/join">作成済の店舗に所属する</a>
                     </div>
                 </div>
             </div>

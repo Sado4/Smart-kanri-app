@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateShopRequest extends FormRequest
+class SearchShopRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class CreateShopRequest extends FormRequest
     public function rules()
     {
         return [
-            'shop_name' => 'required|max:50|unique:shops,name',
+            'shop_name' => 'required|max:50|exists:shops,name',
         ];
     }
 
@@ -33,7 +33,7 @@ class CreateShopRequest extends FormRequest
         return [
             "required" => "店舗名は必須項目です",
             "max" => "店舗名は50文字以下で入力して下さい",
-            "unique" => "既に同じ店舗名が作成されているため、違う店舗名を入力してください",
+            "exists" => "店舗が見つかりませんでした"
         ];
     }
 }

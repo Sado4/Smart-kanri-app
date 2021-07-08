@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\SearchShopRequest;
 use App\Http\Requests\CreateShopRequest;
 use App\Models\Shop;
 use App\Models\User;
@@ -21,33 +22,28 @@ class RegisterSetupJoinController extends Controller
     {
         $user = Auth::user();
         // ユーザーは既に店舗に所属していたら、ログイン後に所属している店舗画面にリダイレクト
-        $shoplist = NULL;
         if ($user->shop_id === NULL) {
-            return view('register.register_setup_join', ['shop_list' => [ 'name' => 'tarou']]);
+            return view('register.register_setup_join', ['shop' => null]);
         } else {
             return redirect()->route('admin');
         }
     }
 
-    public function getView(CreateShopRequest $request)
+    public function searchShop(SearchShopRequest $request)
     {
-        //DBdataを取得
-        // $collections = DB::select('select id, name from users;');
-        // return response()->json(
-        //     [
-        //         'data' => $collections
-        //     ],
-        //     200,
-        //     [],
-        //     JSON_UNESCAPED_UNICODE
-        // );
-        $shoplist = Shop::all();
-        return view('register.register_setup_join', ['name' => 'tarou']);
+        // DBから入力された店舗名を探して、一致したデータを取得
+        $shop = Shop::where('name', $request->only('shop_name'))->first();
+        return view('register.register_setup_join', compact('shop'));
     }
 
-    public function store(CreateShopRequest $request)
+    public function updateStaff(Request $request)
     {
-        // $shop = $request->shop_name;
+        // 店舗とログインユーザの紐づけ
+        $user = Auth::user();
+        $user->shop_id = $request->shop_id;
+        //役割(スタッフの保存)
+        $user->position_id = 2;
+        $user->save();
         return redirect('/admin');
     }
 }
