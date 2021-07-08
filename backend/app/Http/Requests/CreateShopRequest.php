@@ -24,15 +24,16 @@ class CreateShopRequest extends FormRequest
     public function rules()
     {
         return [
-            'shop_name' => 'required|max:50',
+            'shop_name' => 'required|max:50|unique:shops,name',
         ];
     }
 
     public function messages()
     {
         return [
-            "required" => "店舗名は必須項目です。",
-            "max" => "店舗名は50文字以下で入力して下さい"
+            "required" => "店舗名は必須項目です",
+            "max" => "店舗名は50文字以下で入力して下さい",
+            "unique" => "既に同じ店舗名が作成されているため、違う店舗名を入力してください",
         ];
     }
 }
