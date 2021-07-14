@@ -36,6 +36,10 @@ Route::get('/password/changed', 'PasswordChangedController@index');
 Route::post('/admin', 'RegisterSetupNewController@store');
 Route::get('/admin', 'AdminController@index')->name('admin');
 
+Route::get('/admin/customer', 'AdminCustomerController@create')->name('customer.create');
+Route::post('/admin/customer/{id}', 'AdminCustomerController@store');
+Route::get('/admin/customer/{id}', 'AdminCustomerController@show')->name('customer.show');
+
 Route::get('/admin/visits', 'AdminVisitsController@index');
 
 Route::get('/admin/settings/profile', 'AdminSettingsProfileController@index');

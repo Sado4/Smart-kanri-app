@@ -11,11 +11,11 @@ use League\Flysystem\Adapter\Ftp as FtpAdapter;
 use League\Flysystem\Adapter\Local as LocalAdapter;
 use League\Flysystem\AdapterInterface;
 use League\Flysystem\AwsS3v3\AwsS3Adapter as S3Adapter;
-use League\Flysystem\Cached\CachedAdapter;
 use League\Flysystem\Cached\Storage\Memory as MemoryStore;
 use League\Flysystem\Filesystem as Flysystem;
 use League\Flysystem\FilesystemInterface;
 use League\Flysystem\Sftp\SftpAdapter;
+use League\Flysystem\Cached\CachedAdapter;
 
 /**
  * @mixin \Illuminate\Contracts\Filesystem\Filesystem
