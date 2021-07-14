@@ -67,7 +67,7 @@
                     </form>
 
                     <div>
-                        <a href="http://127.0.0.1:8080/">Smart-管理</a> © Developed by
+                        <a href="/">Smart-管理</a> © Developed by
                         <a href="https://twitter.com/derasado">@derasado</a>
                     </div>
                 </div>

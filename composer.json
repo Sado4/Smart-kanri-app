@@ -1,5 +1,8 @@
 {
     "require": {
-        "jeroennoten/laravel-adminlte": "^3.6"
+        "jeroennoten/laravel-adminlte": "^3.6",
+        "barryvdh/laravel-debugbar": "^3.6",
+        "league/flysystem-aws-s3-v3": "~1.0",
+        "league/flysystem-sftp": "~1.0"
     }
 }

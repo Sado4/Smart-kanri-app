@@ -23,5 +23,18 @@ services:
     ports:
       - 13060:3306
 
+  minio:
+    image: minio/minio
+    ports:
+      - "${MINIO_PORT}:9000"
+      - "9001:9001"
+    volumes:
+      - minio-data:/export
+    environment:
+      MINIO_ACCESS_KEY: ${AWS_ACCESS_KEY_ID}
+      MINIO_SECRET_KEY: ${AWS_SECRET_ACCESS_KEY}
+    command: server /export --console-address ":9001"
+
 volumes:
   db-store:
+  minio-data:

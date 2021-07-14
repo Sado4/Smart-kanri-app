@@ -18,7 +18,7 @@
                         メールをご確認いただき、認証を完了してください。
                     </p><br>
                     <div class="col-md-6 offset-md-4">
-                        <a href="http://127.0.0.1:8080/register/setup"><button type="submit" class="btn btn-primary">
+                        <a href="/register/setup"><button type="submit" class="btn btn-primary">
                                 {{ __('メール認証が完了しました') }}
                             </button></a>
                     </div>
