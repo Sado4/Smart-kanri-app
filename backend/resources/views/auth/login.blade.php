@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('ログイン') }}</div>
+                <div class="card-header"><span class="card-h">{{ __('ログイン') }}</span></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -52,24 +52,29 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="center col-md-8 text-center">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('ログイン') }}
+                                    <span class="login-button">{{ __('ログイン') }}</span>
                                 </button>
-
+                            </div>
+                            <div class="pass text-center mt-4">
+                                <p>
                                 @if (Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('パスワードをお忘れですか？') }}
                                 </a>
                                 @endif
+                                </p>
                             </div>
                         </div>
                     </form>
 
-                    <div>
+                    <footer>
+                    <div class="text-center">
                         <a href="/">Smart-管理</a> © Developed by
                         <a href="https://twitter.com/derasado">@derasado</a>
                     </div>
+                    </footer>
                 </div>
             </div>
         </div>

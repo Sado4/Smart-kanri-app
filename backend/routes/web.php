@@ -40,6 +40,7 @@ Route::get('/admin/customer', 'AdminCustomerController@create')->name('customer.
 Route::post('/admin/customer/{id}', 'AdminCustomerController@store');
 Route::get('/admin/customer/{id}', 'AdminCustomerController@show')->name('customer.show');
 
+
 Route::get('/admin/visits', 'AdminVisitsController@index');
 
 Route::get('/admin/settings/profile', 'AdminSettingsProfileController@index');

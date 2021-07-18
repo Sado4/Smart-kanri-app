@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateCustomerRequest;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class AdminCustomerController extends Controller
 {
@@ -39,20 +40,25 @@ class AdminCustomerController extends Controller
         $customers->memo = $request->memo;
         $customers->demand = $request->demand;
 
-        // s3アップロード開始
-        // $image = $request->file('image');
-        // バケットの`myprefix`フォルダへアップロード
-        // $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
-        // アップロードした画像のフルパスを取得
-        // $customers->image = Storage::disk('s3')->url($path);
-
-        $customers->image = $request->image;
+        // 写真が選択されていたらs3アップロード開始
+        if ($request->image) {
+            $file = $request->file('image');
+            // バケットの`myprefix`フォルダへアップロード
+            $path = Storage::disk('s3')->putFile('myprefix', $file, 'public');
+            // アップロードした画像のフルパスを取得
+            $customers->image = Storage::disk('s3')->url($path);
+        }
         $customers->save();
         return redirect()->route('customer.show', ['id' => $customers]);
     }
 
-    public function show()
+    public function show($id)
     {
-        return view('admins.customer.show');
+        $customer = Customer::find($id);
+        // 生年月日から年齢を算出
+        // dd($customer);
+        $date_of_birthday = $customer->birthday;
+        $age = Carbon::parse($date_of_birthday)->age;
+        return view('admins.customer.show', compact('customer', 'age'));
     }
 }
