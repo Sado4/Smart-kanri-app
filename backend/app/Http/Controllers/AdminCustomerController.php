@@ -56,7 +56,6 @@ class AdminCustomerController extends Controller
     {
         $customer = Customer::find($id);
         // 生年月日から年齢を算出
-        // dd($customer);
         $date_of_birthday = $customer->birthday;
         $age = Carbon::parse($date_of_birthday)->age;
         return view('admins.customer.show', compact('customer', 'age'));

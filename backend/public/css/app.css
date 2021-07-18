@@ -366,6 +366,34 @@ h6, .h6 {
     letter-spacing: 0.3em;
 }
 
+.list_mail-wrap {
+    list-style: none;
+    /* デフォルトのアイコンを消す */
+    margin: 0;
+    /* デフォルト指定上書き */
+    padding: 0;
+    /* デフォルト指定上書き */
+}
+
+.list_mail:before {
+    content: "";
+    /* 空の要素作成 */
+    width: 10px;
+    /* 幅指定 */
+    height: 10px;
+    /* 高さ指定 */
+    display: inline-block;
+    /* インラインブロックにする */
+    background-color: #E23586;
+    /* 背景色指定 */
+    border-radius: 50%;
+    /* 要素を丸くする */
+}
+
+.mail-m {
+    margin: 0 auto;
+}
+
 .pass {
     margin: 0 auto;
 }
@@ -9104,4 +9132,3 @@ a.text-dark:hover, a.text-dark:focus {
         border-color: #dee2e6;
     }
 }
-
