@@ -36,7 +36,7 @@ class CreateCustomerRequest extends FormRequest
             'where' => 'nullable|max:500',
             'memo' => 'nullable|max:3000',
             'demand' => 'nullable|max:1000',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:1024|',
         ];
     }
 
@@ -64,6 +64,7 @@ class CreateCustomerRequest extends FormRequest
             "demand.max" => "要望は1000文字以下で入力して下さい",
             "image" => "指定されたファイルが画像ではありません。",
             "image.mines" => "指定された拡張子（PNG/JPG）ではありません。",
+            "image.max" => "ファイルのサイズが１Ｍを超えています。",
         ];
     }
 }

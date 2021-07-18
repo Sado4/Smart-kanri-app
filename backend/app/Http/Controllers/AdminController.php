@@ -33,20 +33,19 @@ class AdminController extends Controller
             $management_id = $request->management_id;
             $memo = $request->memo;
             $tel = $request->tel;
-            // それぞれ検索された値で、顧客テーブルを検索
-            // $customers_name = Customer::where('name', 'like', "%$name%")->get();
-            // $customers_id = Customer::where('id', 'like', "%$id%")->get();
-            // $customers_memo = Customer::where('memo', 'like', "%$memo%")->get();
-            // $customers_tel = Customer::where('tel', $tel)->get();
-            $customers = $customers->where('name', 'like', "%$name%")
-            ->where('management_id', 'like', "%$management_id%")
-            ->where('memo', 'like', "%$memo%")
-            ->where('tel', $tel);
+
+            //検索ワード引っかかったものだけを取得
+            $customers = Customer::where('name', 'like', "%$name%")
+            ->orWhere('management_id', 'like', "%$management_id%")
+            ->orWhere('memo', 'like', "%$memo%")
+            ->orWhere('tel', $tel)
+            ->get();
 
             dd($customers);
 
             return view('admins.admin', compact('customers','submit'));
         }
+        
         return view('admins.admin', compact('user', 'shop', 'customers'));
     }
 }

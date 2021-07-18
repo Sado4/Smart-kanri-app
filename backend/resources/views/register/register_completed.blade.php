@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">メールアドレスは確認済みです</div>
+                <div class="card-header"><span class="card-h">メールアドレスは確認済みです</span></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +14,7 @@
                     </div>
                     @endif
                     <p>新しいアカウントでログインできるようになりました。</p>
-                    <div class="col-md-6 offset-md-4">
+                    <div class="col-md-6 mail-m text-center">
                         <a href="/register/setup"><button type="submit" class="btn btn-primary">
                                 {{ __('セットアップを始める') }}
                             </button></a>

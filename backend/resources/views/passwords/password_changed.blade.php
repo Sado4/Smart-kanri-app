@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">パスワードは変更済みです</div>
+                <div class="card-header"><span class="card-h">パスワードは変更済みです</span></div>
 
                 <div class="card-body">
                     @if (session('status'))

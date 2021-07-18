@@ -24,7 +24,7 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('メールアドレス') }}</label>
 
@@ -56,30 +56,30 @@
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('パスワード(確認)') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-2">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-4 text-center">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('無料ユーザー登録') }}
+                                    <span class="login-button">{{ __('ユーザー登録') }}</span>
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
 
-                <div>
+                <div class="text-center mt-3">
                     <div>
                         <p>
-                            <a href="#">利用規約</a> 及び
-                            <a href="#">プライバシーポリシー</a> に同意いただいた上でご利用下さい。
+                            <a href="/terms">利用規約</a> 及び
+                            <a href="/privacy">プライバシーポリシー</a> に同意いただいた上でご利用下さい。
                         </p>
                     </div>
                 </div>
 
-                <div>
+                <div class="text-center mb-3">
                     <a href="/">Smart-管理</a> © Developed by
                     <a href="https://twitter.com/derasado">@derasado</a>
                 </div>
