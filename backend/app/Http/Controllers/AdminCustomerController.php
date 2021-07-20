@@ -39,18 +39,21 @@ class AdminCustomerController extends Controller
         $customers->where = $request->where;
         $customers->memo = $request->memo;
         $customers->demand = $request->demand;
-
+        $customers->save();
         // 写真が選択されていたらs3アップロード開始
         if ($request->image) {
             // リクエストされたimgファイルを保存
             $file = $request->file('image');
             $fileName = $customers->id . '_front_01.jpg';
             // .envで指定したバケット名へ指定したファイル名でファイルをアップロード
-            Storage::disk('s3')->put($fileName, $file);
+            $file->storeAs($fileName, 's3');
+            // $file = $request->file('image');
+            // $content = file_get_contents($file->getRealPath());
+            // Storage::disk('s3')->put($fileName, $content);
             // 指定したファイル名を保存
             $customers->image = $fileName;
+            $customers->save();
         }
-        $customers->save();
         return redirect()->route('customer.create.show', ['id' => $customers]);
     }
 
