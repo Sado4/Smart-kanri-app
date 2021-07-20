@@ -42,14 +42,16 @@ class AdminCustomerController extends Controller
 
         // 写真が選択されていたらs3アップロード開始
         if ($request->image) {
+            // リクエストされたimgファイルを保存
             $file = $request->file('image');
-            // バケットの`myprefix`フォルダへアップロード
-            $path = Storage::disk('s3')->putFile('myprefix', $file, 'public');
-            // アップロードした画像のフルパスを取得
-            $customers->image = Storage::disk('s3')->url($path);
+            $fileName = $customers->id . '_front_01.jpg';
+            // .envで指定したバケット名へ指定したファイル名でファイルをアップロード
+            Storage::disk('s3')->put($fileName, $file);
+            // 指定したファイル名を保存
+            $customers->image = $fileName;
         }
         $customers->save();
-        return redirect()->route('customer.show', ['id' => $customers]);
+        return redirect()->route('customer.create.show', ['id' => $customers]);
     }
 
     public function show($id)
@@ -59,5 +61,11 @@ class AdminCustomerController extends Controller
         $date_of_birthday = $customer->birthday;
         $age = Carbon::parse($date_of_birthday)->age;
         return view('admins.customer.show', compact('customer', 'age'));
+    }
+
+    public function edit($id)
+    {
+        $customer = Customer::find($id);
+        return view('admins.customer.edit', compact('customer'));
     }
 }

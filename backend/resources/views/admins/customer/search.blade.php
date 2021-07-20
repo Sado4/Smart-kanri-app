@@ -55,9 +55,8 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                                             document.getElementById('logout-form').submit();">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                 document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
@@ -143,9 +142,8 @@
 
                                     <label for="management_id">ID</label>
                                     <div class="mb-3 form_deco">
-                                        <input class="form-control" type="search" name="management_id"
-                                            id="management_id" placeholder="完全一致検索" aria-label="Search for..."
-                                            aria-describedby="btnNavbarSearch" />
+                                        <input class="form-control" type="search" name="management_id" id="management_id" placeholder="完全一致検索"
+                                            aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                                     </div>
 
                                     <label for="memo">メモ</label>
@@ -196,7 +194,7 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            @foreach ($customers as $customer)
+                                            @foreach($search as $customer)
                                                 <tr>
                                                     <td><a class="link" href="admin/customer/{{ $customer->id }}">{{ $customer->management_id }}</a>
                                                     </td>

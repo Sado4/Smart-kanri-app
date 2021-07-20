@@ -6,9 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    //顧客IDが自動増分されないように
-    // public $incrementing = false;
-
     public function shop()
     {
         return $this->belongsTo('App\Models\Shop');
@@ -17,5 +14,12 @@ class Customer extends Model
     public function visit_histories()
     {
         return $this->hasMany('App\Models\VisitHistory');
+    }
+
+    // 画像のURLのアクセサを定義
+    public function getFullImageUrlAttribute()
+    {
+        // 画像のフルパスを返す
+        return  config('filesystems.disks.s3.endpoint') . config('filesystems.disks.s3.bucket') . $this->image;
     }
 }
