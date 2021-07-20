@@ -366,6 +366,8 @@ h6, .h6 {
     letter-spacing: 0.3em;
 }
 
+
+
 .list_mail-wrap {
     list-style: none;
     /* デフォルトのアイコンを消す */
@@ -2395,8 +2397,8 @@ a.btn.disabled, fieldset:disabled a.btn {
 
 .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active, .show>.btn-info.dropdown-toggle {
     color: #fff;
-    background-color: #3f9ae5;
-    border-color: #3495e3;
+    background-color: #e53fdd;
+    border-color: #e53fdd;
 }
 
 .btn-info:not(:disabled):not(.disabled):active:focus, .btn-info:not(:disabled):not(.disabled).active:focus, .show>.btn-info.dropdown-toggle:focus {
@@ -2565,8 +2567,8 @@ a.btn.disabled, fieldset:disabled a.btn {
 
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active, .show>.btn-outline-primary.dropdown-toggle {
     color: #fff;
-    background-color: #3490dc;
-    border-color: #3490dc;
+    background-color: #e53fdd;
+    border-color: #e53fdd;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus, .show>.btn-outline-primary.dropdown-toggle:focus {
@@ -3080,7 +3082,7 @@ input[type=submit].btn-block, input[type=reset].btn-block, input[type=button].bt
 .dropdown-item.active, .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background-color: #3490dc;
+    background-color: #E13486;
 }
 
 .dropdown-item.disabled, .dropdown-item:disabled {
@@ -3866,7 +3868,7 @@ input[type=submit].btn-block, input[type=reset].btn-block, input[type=button].bt
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     color: #fff;
-    background-color: #3490dc;
+    background-color: #e53fdd;
 }
 
 .nav-fill>.nav-link, .nav-fill .nav-item {
@@ -3951,7 +3953,7 @@ input[type=submit].btn-block, input[type=reset].btn-block, input[type=button].bt
 
 .navbar-toggler {
     padding: 0.25rem 0.75rem;
-    font-size: 1.125rem;
+    font-size: 1.500rem;
     line-height: 1;
     background-color: transparent;
     border: 1px solid transparent;
@@ -4190,7 +4192,7 @@ input[type=submit].btn-block, input[type=reset].btn-block, input[type=button].bt
 
 .navbar-light .navbar-toggler {
     color: rgb(255, 255, 255);
-    border-color: rgb(255, 255, 255);
+    /* border-color: rgb(255, 255, 255); */
 }
 
 .navbar-light .navbar-toggler-icon {

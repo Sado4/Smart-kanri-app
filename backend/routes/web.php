@@ -38,8 +38,10 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 
 Route::get('/admin/customer', 'AdminCustomerController@create')->name('customer.create');
 Route::post('/admin/customer/{id}', 'AdminCustomerController@store');
-Route::get('/admin/customer/{id}', 'AdminCustomerController@show')->name('customer.show');
+Route::get('/admin/customer/{id}', 'AdminCustomerController@show')->name('customer.create.show');
 
+Route::get('/admin/customer/edit/{id}', 'AdminCustomerController@edit')->name('customer.edit');
+Route::post('/admin/customer/edit/{id}', 'AdminCustomerController@update')->name('customer.update');
 
 Route::get('/admin/visits', 'AdminVisitsController@index');
 

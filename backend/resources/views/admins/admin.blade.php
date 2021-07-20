@@ -14,6 +14,7 @@
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/admin_auth.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -54,8 +55,9 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                                             document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
@@ -78,27 +80,27 @@
                         <div class="sb-sidenav-menu-heading">店舗名：{{ $user->shop->name }}</div>
                         <p class="border-bottom"></p>
                         <a class="nav-link" href="/admin">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="sb-nav-link-icon"><i class="bi bi-people"></i></div>
                             顧客情報一覧
                         </a>
-                        <a class="nav-link" href="/#">
+                        <a class="nav-link" href="/admin">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             来店記録一覧
                         </a>
                         <div class="sb-sidenav-menu-heading">設定</div>
                         <p class="border-bottom"></p>
                         <a class="nav-link collapsed" href="/#">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            <div class="sb-nav-link-icon"><i class="bi bi-person-circle"></i></div>
                             プロフィール
                         </a>
 
                         <a class="nav-link collapsed" href="/#">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                            <div class="sb-nav-link-icon"><i class="bi bi-shop"></i></div>
                             店舗
                         </a>
 
                         <a class="nav-link collapsed" href="/#">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            <div class="sb-nav-link-icon"><i class="bi bi-person-lines-fill"></i></div>
                             スタッフ
                         </a>
                         <a class="nav-link collapsed" href="/#">
@@ -108,11 +110,6 @@
                     </div>
                 </div>
 
-                <!-- naviのfooter -->
-                <!-- <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                    Start Bootstrap
-                </div> -->
             </nav>
         </div>
         <div id="layoutSidenav_content">
@@ -146,8 +143,9 @@
 
                                     <label for="management_id">ID</label>
                                     <div class="mb-3 form_deco">
-                                        <input class="form-control" type="search" name="management_id" id="management_id" placeholder="検索"
-                                            aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                                        <input class="form-control" type="search" name="management_id"
+                                            id="management_id" placeholder="完全一致検索" aria-label="Search for..."
+                                            aria-describedby="btnNavbarSearch" />
                                     </div>
 
                                     <label for="memo">メモ</label>
@@ -176,47 +174,39 @@
                                     顧客データ一覧
                                 </div>
                                 <div class="card-body">
-                                    <table id="datatablesSimple">
+                                    <table id="datatablesSimple" class="link">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
-                                                <th>顧客名</th>
-                                                <th>年齢</th>
-                                                <th>電話番号</th>
-                                                <th>生年月日</th>
-                                                <th>メールアドレス</th>
+                                                <th><span class="login-button">ID</span></th>
+                                                <th><span class="login-button">顧客名</span></th>
+                                                <th><span class="login-button">年齢</span></th>
+                                                <th><span class="login-button">電話番号</span></th>
+                                                <th><span class="login-button">生年月日</span></th>
+                                                <th><span class="login-button">メールアドレス</span></th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>ID</th>
-                                                <th>顧客名</th>
-                                                <th>年齢</th>
-                                                <th>電話番号</th>
-                                                <th>生年月日</th>
-                                                <th>メールアドレス</th>
+                                                <th><span class="login-button">ID</span></th>
+                                                <th><span class="login-button">顧客名</span></th>
+                                                <th><span class="login-button">年齢</span></th>
+                                                <th><span class="login-button">電話番号</span></th>
+                                                <th><span class="login-button">生年月日</span></th>
+                                                <th><span class="login-button">メールアドレス</span></th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            {{-- @if ( {{ $submit }} )
-                                                @foreach()
-                                                <td>{{ $customers_name->name }}</td>
-                                                <td>{{ $customer->name }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($customer->birthday)->age }}</td>
-                                                <td>{{ $customer->tel }}</td>
-                                                <td>{{ $customer->birthday }}</td>
-                                                <td>{{ $customer->email }}</td>
-                                            @endforeach
-                                            @endif --}}
-                                            {{-- 通常時 --}}
                                             @foreach ($customers as $customer)
                                                 <tr>
-                                                    <td>{{ $customer->management_id }}</td>
-                                                    <td>{{ $customer->name }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($customer->birthday)->age }}</td>
-                                                    <td>{{ $customer->tel }}</td>
-                                                    <td>{{ $customer->birthday }}</td>
-                                                    <td>{{ $customer->email }}</td>
+                                                    <td><a class="link" href="admin/customer/{{ $customer->id }}">{{ $customer->management_id }}</a>
+                                                    </td>
+                                                    <td><a class="link" href="admin/customer/{{ $customer->id }}">{{ $customer->name }}</a></td>
+                                                    <td><a class="link"
+                                                            href="admin/customer/{{ $customer->id }}">{{ \Carbon\Carbon::parse($customer->birthday)->age }}
+                                                        </a></td>
+                                                    <td><a class="link" href="admin/customer/{{ $customer->id }}">{{ $customer->tel }}</a></td>
+                                                    <td><a class="link" href="admin/customer/{{ $customer->id }}">{{ $customer->birthday }}</a></td>
+                                                    <td><a class="link" href="admin/customer/{{ $customer->id }}">{{ $customer->email }}</a></td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

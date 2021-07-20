@@ -252,10 +252,10 @@
                                     {{ __('作成') }}
                                 </button>
                             </div>
-                            <div class="col-md-8 offset-md-4">
-                                <a href="/admin"><button type="submit" class="btn btn-primary">
-                                        {{ __('キャンセル') }}
-                                    </button></a>
-                            </div>
                         </div>
                     </form>
+                    <div class="col-md-8 offset-md-4">
+                        <a href="/admin"><button type="submit" class="btn btn-primary">
+                                {{ __('キャンセル') }}
+                            </button></a>
+                    </div>
