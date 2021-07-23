@@ -26,8 +26,8 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/login">ログイン</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/register">ユーザー登録</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">ログイン</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">ユーザー登録</a></li>
                 </ul>
             </div>
         </div>
@@ -38,7 +38,7 @@
             <div class="container px-5">
                 <h1 class="masthead-heading mb-0">Smart-管理</h1>
                 <p class="mb-0 lead h6">顧客の様々な情報をスマートに<br>複数メンバーで管理するwebアプリ</p>
-                <a class="btn btn-primary btn-xl rounded-pill mt-5" href="/register">無料ユーザー登録</a>
+                <a class="btn btn-primary btn-xl rounded-pill mt-5" href="{{ route('register') }}">無料ユーザー登録</a>
             </div>
         </div>
         <div class="bg-circle-1 bg-circle"></div>
@@ -121,7 +121,7 @@
                         <p class="text-center mt-4">面倒な手続きや設定などは不要
                         <p class="text-center mt-4">無料会員登録で簡単に導入できます！
                         </p>
-                        <div class="text-center"><a class="btn btn-primary btn-xl rounded-pill mt-5" href="/register">無料ユーザー登録</a></div>
+                        <div class="text-center"><a class="btn btn-primary btn-xl rounded-pill mt-5" href="{{ route('register') }}">無料ユーザー登録</a></div>
                     </div>
                 </div>
             </div>
@@ -131,8 +131,8 @@
     <footer class="py-5 bg-black">
         <div class="container">
             <ul class="policy">
-                <li><a href="/terms">サイトポリシー</a></li>
-                <li><a href="/privacy">プライバシーポリシー</a></li>
+                <li><a href="{{ route('terms') }}">サイトポリシー</a></li>
+                <li><a href="{{ route('privacy') }}">プライバシーポリシー</a></li>
             </ul>
             <p class="m-0 text-center">Copyright &copy; <a href="#page-top">Smart-管理</a> 2021
                 Developed by

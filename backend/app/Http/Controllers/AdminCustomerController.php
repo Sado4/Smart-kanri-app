@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCustomerRequest;
+use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
@@ -18,7 +19,8 @@ class AdminCustomerController extends Controller
 
     public function create()
     {
-        return view('admins.customer.create');
+        $customers = Customer::all();
+        return view('admins.customer.create', compact('customers'));
     }
 
     public function store(CreateCustomerRequest $request)
@@ -46,15 +48,16 @@ class AdminCustomerController extends Controller
             $file = $request->file('image');
             $fileName = $customers->id . '_front_01.jpg';
             // .envで指定したバケット名へ指定したファイル名でファイルをアップロード
-            $file->storeAs($fileName, 's3');
-            // $file = $request->file('image');
-            // $content = file_get_contents($file->getRealPath());
-            // Storage::disk('s3')->put($fileName, $content);
+            $upFile = $file->storeAs('', $fileName, 's3');
+            if ($upFile == false) {
+                $upError = 'ファイルのアップロードに失敗しました。';
+                return redirect()->route('customer.edit', ['id' => $customers], compact('upError'));
+            }
             // 指定したファイル名を保存
             $customers->image = $fileName;
             $customers->save();
         }
-        return redirect()->route('customer.create.show', ['id' => $customers]);
+        return redirect()->route('customer.show', ['id' => $customers]);
     }
 
     public function show($id)
@@ -68,7 +71,64 @@ class AdminCustomerController extends Controller
 
     public function edit($id)
     {
+        $upError = null;
         $customer = Customer::find($id);
-        return view('admins.customer.edit', compact('customer'));
+        return view('admins.customer.edit', compact('customer', 'upError'));
+    }
+
+    public function update(UpdateCustomerRequest $request, $id)
+    {
+        $customers = Customer::find($id);
+        $customers->name = $request->name;
+        $customers->kana = $request->kana;
+        $customers->management_id = $request->management_id;
+        $customers->sex = $request->sex;
+        $customers->birthday = $request->birthday;
+        $customers->job = $request->job;
+        $customers->tel = $request->tel;
+        $customers->email = $request->email;
+        $customers->motive = $request->motive;
+        $customers->where = $request->where;
+        $customers->memo = $request->memo;
+        $customers->demand = $request->demand;
+        $customers->save();
+
+        if ($request->image) {
+            // リクエストされたimgファイルを保存
+            $file = $request->file('image');
+            $fileName = $customers->id . '_front_01.jpg';
+            // .envで指定したバケット名へ指定したファイル名でファイルをアップロード
+            $upFile = $file->storeAs('', $fileName, 's3');
+            // ファイルのアップロードに失敗したら、やりなおし
+            if ($upFile == false) {
+                $upError = 'ファイルのアップロードに失敗しました。';
+                return redirect()->route('customer.edit', ['id' => $customers], compact('upError'));
+            }
+            // 指定したファイル名を保存
+            $customers->image = $fileName;
+            $customers->save();
+        }
+        return redirect()->route('customer.show', ['id' => $customers]);
+    }
+
+    public function fileDelete($id)
+    {
+        $customer = Customer::find($id);
+        // s3にあるファイルを削除
+        //full_image_urlで取得するとlocalhost9090で呼ばれるので、今回はminioにあるファイルを削除するため、$customer->imageで取得
+        $fileName =$customer->image;
+// dd($fileName);
+        Storage::disk('s3')->delete($fileName);
+        // データベースのimageの値を空にする。
+        $customer->image = NULL;
+        $customer->save();
+        return redirect()->route('customer.edit', ['id' => $customer]);
+    }
+
+    public function destroy($id)
+    {
+        $customer = Customer::find($id);
+        $customer->delete();
+        return redirect()->route('admin');
     }
 }

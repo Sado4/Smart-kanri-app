@@ -32,7 +32,9 @@
             <div class="col-md-8 mt-2">
 
                 <div class="card-body">
-                    <form method="POST" action="{{ url('/admin/customer/{id}') }}" enctype="multipart/form-data">
+                    {{-- <form method="POST" action="{{ url('/admin/customer/{id}') }}" enctype="multipart/form-data"> --}}
+                    <form method="POST" action="{{ route('customer.store') }}"
+                        enctype="multipart/form-data">
                         <div>
                             <h5>～必須情報～</h5>
                             <p class="small">*入力必須項目</p>
@@ -84,10 +86,12 @@
                             </ul>
                         @endif
                         <div class="form-group row">
-                            <label for="management_id" class="col-md-4 col-form-label text-md-right">{{ __('ID*') }}</label>
+                            <label for="management_id"
+                                class="col-md-4 col-form-label text-md-right">{{ __('ID*') }}</label>
 
                             <div class="col-md-6">
-                                <input id="management_id" type="number" min="1" class="form-control" name="management_id" value="{{ old('management_id') }}">
+                                <input id="management_id" type="number" min="1" class="form-control"
+                                    name="management_id" value="{{ old('management_id') }}">
                             </div>
                         </div>
 
@@ -148,16 +152,17 @@
                             <label for="tel" class="col-md-4 col-form-label text-md-right">{{ __('電話番号') }}</label>
 
                             <div class="col-md-6">
-                                <input placeholder="※ハイフン無し" id="tel" type="tel" class="form-control" name="tel" value="{{ old('tel') }}">
+                                <input placeholder="※ハイフン無し" id="tel" type="tel" class="form-control" name="tel"
+                                    value="{{ old('tel') }}">
                             </div>
                         </div>
-                                @if (count($errors) > 0)
-                                    <ul>
-                                        @error('email')
-                                            <li>{{ $message }}</li>
-                                        @enderror
-                                    </ul>
-                                @endif
+                        @if (count($errors) > 0)
+                            <ul>
+                                @error('email')
+                                    <li>{{ $message }}</li>
+                                @enderror
+                            </ul>
+                        @endif
                         <div class="form-group row">
                             <label for="email"
                                 class="col-md-4 col-form-label text-md-right">{{ __('メールアドレス') }}</label>
@@ -167,13 +172,13 @@
                                     value="{{ old('email') }}">
                             </div>
                         </div>
-                                @if (count($errors) > 0)
-                                    <ul>
-                                        @error('motive')
-                                            <li>{{ $message }}</li>
-                                        @enderror
-                                    </ul>
-                                @endif
+                        @if (count($errors) > 0)
+                            <ul>
+                                @error('motive')
+                                    <li>{{ $message }}</li>
+                                @enderror
+                            </ul>
+                        @endif
                         <div class="form-group row">
                             <label for="motive"
                                 class="col-md-4 col-form-label text-md-right">{{ __('来店動機(何が魅力で来店？)') }}</label>
@@ -183,13 +188,13 @@
                                     value="{{ old('motive') }}">
                             </div>
                         </div>
-                                @if (count($errors) > 0)
-                                    <ul>
-                                        @error('where')
-                                            <li>{{ $message }}</li>
-                                        @enderror
-                                    </ul>
-                                @endif
+                        @if (count($errors) > 0)
+                            <ul>
+                                @error('where')
+                                    <li>{{ $message }}</li>
+                                @enderror
+                            </ul>
+                        @endif
                         <div class="form-group row">
                             <label for="where"
                                 class="col-md-4 col-form-label text-md-right">{{ __('当店をどこで見つけたか？') }}</label>
@@ -199,46 +204,48 @@
                                     value="{{ old('where') }}">
                             </div>
                         </div>
-                                @if (count($errors) > 0)
-                                    <ul>
-                                        @error('memo')
-                                            <li>{{ $message }}</li>
-                                        @enderror
-                                    </ul>
-                                @endif
+                        @if (count($errors) > 0)
+                            <ul>
+                                @error('memo')
+                                    <li>{{ $message }}</li>
+                                @enderror
+                            </ul>
+                        @endif
                         <div class="form-group row">
                             <label for="memo" class="col-md-4 col-form-label text-md-right">{{ __('メモ') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="memo" type="text" class="form-control" value="{{ old('memo') }}" name="memo">{{ old('memo') }}</textarea>
+                                <textarea id="memo" type="text" class="form-control" value="{{ old('memo') }}"
+                                    name="memo">{{ old('memo') }}</textarea>
                             </div>
                         </div>
-                                @if (count($errors) > 0)
-                                    <ul>
-                                        @error('demand')
-                                            <li>{{ $message }}</li>
-                                        @enderror
-                                    </ul>
-                                @endif
+                        @if (count($errors) > 0)
+                            <ul>
+                                @error('demand')
+                                    <li>{{ $message }}</li>
+                                @enderror
+                            </ul>
+                        @endif
                         <div class="form-group row">
                             <label for="demand"
                                 class="col-md-4 col-form-label text-md-right">{{ __('要望など') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="demand" value="{{ old('demand') }}" type="text" class="form-control" name="demand">{{ old('demand') }}</textarea>
+                                <textarea id="demand" value="{{ old('demand') }}" type="text" class="form-control"
+                                    name="demand">{{ old('demand') }}</textarea>
                             </div>
                         </div>
 
                         <div class="mt-5 mb-3">
                             <h5>写真</h5>
                         </div>
-                                @if (count($errors) > 0)
-                                    <ul>
-                                        @error('image')
-                                            <li>{{ $message }}</li>
-                                        @enderror
-                                    </ul>
-                                @endif
+                        @if (count($errors) > 0)
+                            <ul>
+                                @error('image')
+                                    <li>{{ $message }}</li>
+                                @enderror
+                            </ul>
+                        @endif
                         <div>
                             <div>
                                 <input type="file" name="image" accept="image/jpeg, image/png">
