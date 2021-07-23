@@ -20,33 +20,40 @@ Route::middleware('verified');
 Auth::routes(['verify' => true]);
 
 
-Route::get('/', 'IndexController@index');
-Route::get('/privacy', 'PrivacyController@index');
-Route::get('/terms', 'TermsController@index');
+Route::get('/', 'IndexController@index')->name('top');
+Route::get('/privacy', 'PrivacyController@index')->name('privacy');
+Route::get('/terms', 'TermsController@index')->name('terms');
 
-Route::get('/register/setup', 'RegisterSetupController@index');
-Route::get('/register/setup/new', 'RegisterSetupNewController@create');
-Route::get('/register/setup/join', 'RegisterSetupJoinController@create');
-Route::post('/register/setup/join', 'RegisterSetupJoinController@searchShop');
+Route::get('/register/setup', 'RegisterSetupController@index')->name('setup.index');
+Route::get('/register/setup/new', 'RegisterSetupNewController@create')->name('setup.new');
+Route::get('/register/setup/join', 'RegisterSetupJoinController@create')->name('setup.join');
+Route::post('/register/setup/join', 'RegisterSetupJoinController@searchShop')->name('setup.search');
 Route::post('/register/staff/join', 'RegisterSetupJoinController@updateStaff')->name('staff.join');
 Route::get('/register/completed', 'RegisterCompletedController@index');
 
 Route::get('/password/changed', 'PasswordChangedController@index');
 
-Route::post('/admin', 'RegisterSetupNewController@store');
+Route::post('/admin', 'RegisterSetupNewController@store')->name('shop.create');
 Route::get('/admin', 'AdminController@index')->name('admin');
 
 Route::get('/admin/customer', 'AdminCustomerController@create')->name('customer.create');
-Route::post('/admin/customer/{id}', 'AdminCustomerController@store');
-Route::get('/admin/customer/{id}', 'AdminCustomerController@show')->name('customer.create.show');
+Route::post('/admin/customer/', 'AdminCustomerController@store')->name('customer.store');
+Route::get('/admin/customer/{id}', 'AdminCustomerController@show')->name('customer.show');
 
-Route::get('/admin/customer/edit/{id}', 'AdminCustomerController@edit')->name('customer.edit');
-Route::post('/admin/customer/edit/{id}', 'AdminCustomerController@update')->name('customer.update');
+Route::get('/admin/customer/{id}/edit', 'AdminCustomerController@edit')->name('customer.edit');
+Route::post('/admin/customer/{id}/update', 'AdminCustomerController@update')->name('customer.update');
+Route::post('/admin/customer/{id}/delete', 'AdminCustomerController@fileDelete')->name('file.delete');
+Route::post('/admin/customer/destroy/{id}', 'AdminCustomerController@destroy')->name('customer.destroy');
 
-Route::get('/admin/visits', 'AdminVisitsController@index');
+// Route::get('/admin/visits', 'AdminVisitsController@index');
 
-Route::get('/admin/settings/profile', 'AdminSettingsProfileController@index');
-Route::get('/admin/settings/shop', 'AdminSettingsShopController@index');
-Route::get('/admin/settings/staff', 'AdminSettingsStaffController@index');
-Route::get('/admin/settings/staff/request', 'AdminSettingsStaffRequestController@index');
-Route::get('/admin/settings/menu', 'AdminSettingsMenuController@index');
+Route::get('/admin/settings/profile', 'AdminSettingsProfileController@show')->name('profile.show');
+Route::post('/admin/settings/profile/update', 'AdminSettingsProfileController@update')->name('profile.update');
+Route::get('/admin/settings/profile/edit', 'AdminSettingsProfileController@edit')->name('email.edit');
+Route::post('/admin/settings/profile/email', 'AdminSettingsProfileController@sendChangeEmailLink')->name('email.change');
+Route::get("reset/{token}", "AdminSettingsProfileController@reset")->name('email.reset');
+Route::get('/admin/settings/shop', 'AdminSettingsShopController@setting')->name('shop.setting');
+Route::post('/admin/settings/shop/update/{id}', 'AdminSettingsShopController@update')->name('shop.update');
+Route::get('/admin/settings/staff', 'AdminSettingsStaffController@index')->name('staff.index');
+// Route::get('/admin/settings/staff/request', 'AdminSettingsStaffRequestController@index');
+// Route::get('/admin/settings/menu', 'AdminSettingsMenuController@index');

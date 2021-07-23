@@ -20,6 +20,6 @@ class Customer extends Model
     public function getFullImageUrlAttribute()
     {
         // 画像のフルパスを返す
-        return  config('filesystems.disks.s3.endpoint') . config('filesystems.disks.s3.bucket') . $this->image;
+        return  config('filesystems.disks.s3.disp_url') . '/' . config('filesystems.disks.s3.bucket') . '/' . $this->image;
     }
 }

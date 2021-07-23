@@ -57,7 +57,7 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                                                                         document.getElementById('logout-form').submit();">
+                                                                                                                                                             document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
@@ -83,7 +83,7 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             顧客情報一覧
                         </a>
-                        <a class="nav-link" href="/#">
+                        <a class="nav-link" href="/admin">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             来店記録一覧
                         </a>
@@ -128,7 +128,7 @@
                                 <div class="col-md-8">
                                     <div class="card">
                                         <div>
-                                            <p>よみ仮名</p>
+                                            <p>{{ $customer->kana }}</p>
                                             <h1>{{ $customer->name }}様</h1>
                                         </div>
                                         <div>
@@ -240,11 +240,14 @@
                                         <div>
                                             <h1>写真</h1>
                                         </div>
+                                        @if (!$customer->image == null)
+                                            <div>
+                                                <img width="250" height="250" src="{{ $customer->full_image_url }}">
+                                            </div>
+                                        @endif
                                         <div>
-                                            <img src="{{ $customer->full_image_url }}">
-                                        </div>
-                                        <div>
-                                            <a href="/admin/customer/edit/{{ $customer->id }}"><button type="submit" class="btn btn-primary">
+                                            <a href="{{ route('customer.edit', ['id' => $customer->id]) }}"><button
+                                                    type="submit" class="btn btn-primary">
                                                     編集する
                                                 </button></a>
                                         </div>
