@@ -50,7 +50,7 @@ class AdminController extends Controller
                 if (!empty($tel)) {
                     $query =  $query->Where('tel', $tel);
                 }
-                $search = $query->latest('updated_at')->get();
+                $search = $query->where('shop_id', $shop->id)->latest('updated_at')->get();
 
             return view('admins.customer.search', compact('user', 'shop', 'search'));
         }
