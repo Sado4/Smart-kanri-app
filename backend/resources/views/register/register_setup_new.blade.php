@@ -62,8 +62,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                     document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('ログアウト') }}
                                     </a>
 
@@ -99,8 +100,8 @@
                                                     value="{{ old('shop_name') }}" placeholder="店舗名" size="25">
                                             @else
                                                 <input id="shop_name" class="form-control is-invalid" type="text"
-                                                    name="shop_name" value="{{ old('shop_name') }}"
-                                                    placeholder="店舗名" size="25">
+                                                    name="shop_name" value="{{ old('shop_name') }}" placeholder="店舗名"
+                                                    size="25">
                                             @endif
 
                                             @if (count($errors) > 0)
