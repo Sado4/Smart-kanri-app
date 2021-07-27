@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
+use App\Http\Requests\InputCustomerRequest;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
@@ -22,6 +23,13 @@ class AdminCustomerController extends Controller
         $user = Auth::user();
         $customers = Customer::all();
         return view('admins.customer.create', compact('customers', 'user'));
+    }
+
+    public function customerInput()
+    {
+        $user = Auth::user();
+        $customers = Customer::all();
+        return view('admins.customer.input', compact('customers', 'user'));
     }
 
     public function store(CreateCustomerRequest $request)
@@ -58,6 +66,27 @@ class AdminCustomerController extends Controller
             $customers->image = $fileName;
             $customers->save();
         }
+        return redirect()->route('customer.show', ['id' => $customers]);
+    }
+
+    public function inputStore(InputCustomerRequest $request)
+    {
+        // POST時に各データを保存
+        $customers = new Customer();
+        $user = Auth::user();
+        $customers->shop_id = $user->shop_id;
+        $customers->name = $request->name;
+        $customers->kana = $request->kana;
+        $customers->sex = $request->sex;
+        $customers->birthday = $request->birthday;
+        $customers->job = $request->job;
+        $customers->tel = $request->tel;
+        $customers->email = $request->email;
+        $customers->motive = $request->motive;
+        $customers->where = $request->where;
+        $customers->demand = $request->demand;
+        $customers->save();
+
         return redirect()->route('customer.show', ['id' => $customers]);
     }
 

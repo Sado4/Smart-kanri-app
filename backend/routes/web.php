@@ -37,7 +37,9 @@ Route::post('/admin', 'RegisterSetupNewController@store')->name('shop.create');
 Route::get('/admin', 'AdminController@index')->name('admin');
 
 Route::get('/admin/customer', 'AdminCustomerController@create')->name('customer.create');
+Route::get('/admin/customer/input', 'AdminCustomerController@customerInput')->name('customer.input');
 Route::post('/admin/customer/', 'AdminCustomerController@store')->name('customer.store');
+Route::post('/admin/customer/input', 'AdminCustomerController@inputStore')->name('input.store');
 Route::get('/admin/customer/{id}', 'AdminCustomerController@show')->name('customer.show');
 
 Route::get('/admin/customer/{id}/edit', 'AdminCustomerController@edit')->name('customer.edit');
