@@ -1,7 +1,7 @@
 @extends('layouts.css_none_admin')
 
-@section('description', '顧客情報を新規作成するページ')
-@section('title', '顧客新規作成')
+@section('description', 'お客様自身に情報を入力してもらうページ')
+@section('title', 'お客様情報入力')
 @section('pageCss')
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/create.css') }}" rel="stylesheet" />
@@ -12,21 +12,15 @@
 @include('layouts.side_nav')
 
 @section('content')
-    <div class="text-center pt-4 mb-4">
-        <a class="card-h" href="{{ route('customer.input') }}"><button type="submit" class="btn btn-primary">
-            <span>{{ __('お客様入力専用ページへ') }}</span>
-        </button></a>
-    </div>
-
     <main class="py-4">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header card-h text-center">顧客情報新規登録</div>
+                        <div class="card-header card-h text-center">お客様情報入力</div>
 
                         <div class="card-body text-center">
-                            <form method="POST" action="{{ route('customer.store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('input.store') }}" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="mb-4">
@@ -36,7 +30,7 @@
 
                                 {{-- 顧客名 --}}
                                 <div class="form-group row">
-                                    <label for="name" class="col-md-4 col-form-label text-md-right">顧客名*</label>
+                                    <label for="name" class="col-md-4 col-form-label text-md-right">お名前*</label>
                                     <div class="col-md-6">
                                         @if (count($errors) == 0 || !$errors->has('name'))
                                             <input id="name" class="form-control" type="text" name="name"
@@ -68,28 +62,6 @@
 
                                         @if (count($errors) > 0)
                                             @error('kana')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        @endif
-                                    </div>
-                                </div>
-
-                                {{-- ID --}}
-                                <div class="form-group row">
-                                    <label for="management_id" class="col-md-4 col-form-label text-md-right">ID*</label>
-                                    <div class="col-md-6">
-                                        @if (count($errors) == 0 || !$errors->has('management_id'))
-                                            <input id="management_id" min="1" class="form-control" type="number"
-                                                name="management_id" value="{{ old('management_id') }}"
-                                                placeholder="例: 11">
-                                        @else
-                                            <input id="management_id" min="1" class="form-control is-invalid" type="number"
-                                                name="management_id" value="{{ old('management_id') }}"
-                                                placeholder="例: 11">
-                                        @endif
-
-                                        @if (count($errors) > 0)
-                                            @error('management_id')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         @endif
@@ -200,13 +172,13 @@
 
                                 {{-- 来店動機 --}}
                                 <div class="form-group row">
-                                    <label for="motive" class="col-md-4 col-form-label text-md-right">来店動機(何が魅力で来店？)</label>
+                                    <label for="motive" class="col-md-4 col-form-label text-md-right">来店動機(何が魅力で来店しましたか？)</label>
                                     <div class="col-md-6">
                                         @if (count($errors) == 0 || !$errors->has('motive'))
-                                            <input id="motive" class="form-control" type="text" name="motive"
+                                            <input placeholder="例: 写真の雰囲気がよかったなど" id="motive" class="form-control" type="text" name="motive"
                                                 value="{{ old('motive') }}">
                                         @else
-                                            <input id="motive" class="form-control is-invalid" type="text" name="motive"
+                                            <input placeholder="例: 写真の雰囲気がよかったなど" id="motive" class="form-control is-invalid" type="text" name="motive"
                                                 value="{{ old('motive') }}">
                                         @endif
 
@@ -220,13 +192,13 @@
 
                                 {{-- どこで見つけたか --}}
                                 <div class="form-group row">
-                                    <label for="where" class="col-md-4 col-form-label text-md-right">当店をどこで見つけたか？</label>
+                                    <label for="where" class="col-md-4 col-form-label text-md-right">当店をどこで見つけましたか？</label>
                                     <div class="col-md-6">
                                         @if (count($errors) == 0 || !$errors->has('where'))
-                                            <input id="where" class="form-control" type="text" name="where"
+                                            <input placeholder="例: Google検索など" id="where" class="form-control" type="text" name="where"
                                                 value="{{ old('where') }}">
                                         @else
-                                            <input id="where" class="form-control is-invalid" type="text" name="where"
+                                            <input placeholder="例: Google検索など" id="where" class="form-control is-invalid" type="text" name="where"
                                                 value="{{ old('where') }}">
                                         @endif
 
@@ -238,37 +210,15 @@
                                     </div>
                                 </div>
 
-
-                                {{-- メモ --}}
-                                <div class="form-group row">
-                                    <label for="memo" class="col-md-4 col-form-label text-md-right">メモ</label>
-                                    <div class="col-md-6">
-                                        @if (count($errors) == 0 || !$errors->has('memo'))
-                                            <textarea rows="4" id="memo" class="form-control" type="text" name="memo"
-                                                value="{{ old('memo') }}">{{ old('memo') }}</textarea>
-                                        @else
-                                            <textarea rows="4" id="memo" class="form-control is-invalid" type="text" name="memo"
-                                                value="{{ old('memo') }}">{{ old('memo') }}</textarea>
-                                        @endif
-
-                                        @if (count($errors) > 0)
-                                            @error('memo')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        @endif
-                                    </div>
-                                </div>
-
-
                                 {{-- 要望など --}}
                                 <div class="form-group row">
                                     <label for="demand" class="col-md-4 col-form-label text-md-right">要望など</label>
                                     <div class="col-md-6">
                                         @if (count($errors) == 0 || !$errors->has('demand'))
-                                            <textarea rows="4" id="demand" class="form-control" type="text" name="demand"
+                                            <textarea rows="4" placeholder="ご自由にご記入ください" id="demand" class="form-control" type="text" name="demand"
                                                 value="{{ old('demand') }}">{{ old('demand') }}</textarea>
                                         @else
-                                            <textarea rows="4" id="demand" class="form-control is-invalid" type="text" name="demand"
+                                            <textarea rows="4" placeholder="ご自由にご記入ください" id="demand" class="form-control is-invalid" type="text" name="demand"
                                                 value="{{ old('demand') }}">{{ old('demand') }}</textarea>
                                         @endif
 
@@ -280,39 +230,13 @@
                                     </div>
                                 </div>
 
-                                {{-- 写真 --}}
-                                <div class="mt-5 form-group row">
-                                    <label class="mb-3" for="image" class="">写真</label>
-                                    <div class="">
-                                        @if (count($errors) == 0 || !$errors->has('image'))
-                                            <input class="form-control not" id="image" type="file" name="image"
-                                                accept="image/jpeg, image/png">
-                                        @else
-                                            <input class="form-control is-invalid not" id="image" type="file" name="image"
-                                                accept="image/jpeg, image/png">
-                                        @endif
-
-                                        @if (count($errors) > 0)
-                                            @error('image')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        @endif
-                                    </div>
-                                </div>
-
-
-                                <div class="text-center mt-5">
-                                    <button type="submit" class="btn btn-primary">
-                                        <span>{{ __('作成する') }}</span>
+                                <div class="text-center mt-5 mb-4">
+                                    <button style="width: 150px;" type="submit" class="btn btn-primary">
+                                        <span>{{ __('完了') }}</span>
                                     </button>
                                 </div>
                             </form>
 
-                            <div class="text-center mt-5 mb-3">
-                                <a href="/admin"><button type="submit" class="btn btn-primary">
-                                        <span>{{ __('戻る') }}</span>
-                                    </button></a>
-                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,161 +1,62 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('layouts.admin')
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="顧客管理システムでスマートに顧客を管理できるWebアプリケーションの「Smart-管理」の管理画面" />
-    <meta name="author" content="@derasado" />
-    <title>管理画面 - Smart-管理</title>
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/admin_auth.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet" />
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous">
-    </script>
-</head>
+@section('description', '顧客情報の詳細を表示するページ')
+@section('title', '顧客詳細')
+@section('pageCss')
 
-<body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="/admin">Smart-管理<br>管理ボード</a>
-        <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
-                class="fas fa-bars"></i></button>
+@endsection
 
-        <!-- auth組み込み部分ここから貼り付け -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
+@include('layouts.header_nav')
 
-            </ul>
+@include('layouts.side_nav')
 
-            <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Authentication Links -->
-                @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('ログイン') }}</a>
-                    </li>
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('ユーザー登録') }}</a>
-                        </li>
-                    @endif
-                @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
+@section('content')
+    <main>
+        <div class="container-fluid px-4 text-center">
+            <div class="card-body">
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                                                                                                                             document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                @endguest
-            </ul>
-        </div>
-
-
-    </nav>
-    <div id="layoutSidenav">
-        <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                <div class="sb-sidenav-menu">
-                    <div class="nav">
-                        <div class="sb-sidenav-menu-heading">店舗名</div>
-                        <p class="border-bottom"></p>
-                        <a class="nav-link" href="/admin">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            顧客情報一覧
-                        </a>
-                        <a class="nav-link" href="/admin">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            来店記録一覧
-                        </a>
-                        <div class="sb-sidenav-menu-heading">設定</div>
-                        <p class="border-bottom"></p>
-                        <a class="nav-link collapsed" href="/#">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            プロフィール
-                        </a>
-
-                        <a class="nav-link collapsed" href="/#">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            店舗
-                        </a>
-
-                        <a class="nav-link collapsed" href="/#">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            スタッフ
-                        </a>
-                        <a class="nav-link collapsed" href="/#">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            メニュー
-                        </a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-
-        <div id="layoutSidenav_content">
-            <main>
-                <div class="container-fluid px-4">
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        {{-- 名前などの先頭の情報 --}}
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-md-8">
-                                    <div class="card">
-                                        <div>
-                                            <p>{{ $customer->kana }}</p>
-                                            <h1>{{ $customer->name }}様</h1>
-                                        </div>
-                                        <div>
-                                            <p>{{ $customer->sex }}</p>
-                                            <p>{{ $age }}歳</p>
-                                        </div>
-
-                                        <div>
-                                            <div>
-                                                <a href="#"><button type="submit" class="btn btn-primary">
-                                                        来店記録を追加
-                                                    </button></a>
-                                            </div>
-                                            <div>
-                                                <a href="#"><button type="submit" class="btn btn-primary">
-                                                        顧客情報を削除
-                                                    </button></a>
-                                            </div>
-                                        </div>
+                {{-- 名前などの先頭の情報 --}}
+                <div class="container mb-3">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="mt-3">
+                                    <h2>-基本情報-</h2>
+                                </div>
+                                <div style="max-width: 90%;" class="mx-auto">
+                                    <p class="mt-3">{{ $customer->kana }}</p>
+                                    <div>
+                                        <h3 class="border-bottom">{{ $customer->name }} 様</h3>
                                     </div>
                                 </div>
+                                <div class="mt-3">
+                                    <p>ID: {{ $customer->management_id }}</p>
+                                </div>
+                                <div class="mb-2">
+                                    <p class="i-block mr-2">{{ $customer->sex }}</p>
+                                    <p class="i-block ml-2">{{ $age }}歳</p>
+                                </div>
+
+                                {{-- <div>
+                                    <div>
+                                        <a href="#"><button type="submit" class="btn btn-primary">
+                                                来店記録を追加
+                                            </button></a>
+                                    </div>
+                                    <div>
+                                        <a href="#"><button type="submit" class="btn btn-primary">
+                                                顧客情報を削除
+                                            </button></a>
+                                    </div>
+                                </div> --}}
                             </div>
                         </div>
+                    </div>
+                </div>
 
 
-                        {{-- 来店情報 --}}
-                        {{-- <div>
+                {{-- 来店情報 --}}
+                {{-- <div>
                     <div>
                         <div>
                             <h1>来店情報</h1>
@@ -178,87 +79,74 @@
                         </div> --}}
 
 
-                        {{-- 基本情報 --}}
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-md-8">
-                                    <div class="card">
-                                        <div>
-                                            <h1>基本情報</h1>
+                {{-- 基本情報 --}}
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="mt-3 mb-3">
+
+                                    <div class="mb-3">
+                                        <h2>-詳細情報-</h2>
+                                    </div>
+                                    <div style="max-width: 90%;" class=" mx-auto mt-4">
+                                        <p class="small">生年月日</p>
+                                        <p class="mx-auto border-bottom">{{ $customer->birthday }}</p>
+                                    </div>
+                                    <div style="max-width: 90%;" class=" mx-auto mt-4">
+                                    <p class="small">職業</p>
+                                        <p  class="mx-auto border-bottom">{{ $customer->job }}</p>
+                                    </div>
+                                    <div style="max-width: 90%;" class=" mx-auto mt-4">
+                                        <p class="small">電話番号</p>
+                                        <p  class="mx-auto border-bottom">{{ $customer->tel }}</p>
+                                    </div>
+                                    <div style="max-width: 90%;" class=" mx-auto mt-4">
+                                        <p class="small">メールアドレス</p>
+                                        <p  class="mx-auto border-bottom">{{ $customer->email }}</p>
+                                    </div>
+                                    <div style="max-width: 90%;" class=" mx-auto mt-4">
+                                        <p class="small">来店動機(何が魅力で来店？)</p>
+                                        <p  class="mx-auto border-bottom">{{ $customer->motive }}</p>
+                                    </div>
+                                    <div style="max-width: 90%;" class=" mx-auto mt-4">
+                                        <p class="small">当店をどこで見つけた？</p>
+                                        <p  class="mx-auto border-bottom">{{ $customer->where }}</p>
+                                    </div>
+                                    <div style="max-width: 90%;" class="mt-4 mx-auto">
+                                        <p class="small">メモ</p>
+                                        <div class="box-m">
+                                            <p class="mx-auto">{{ $customer->memo }}</p>
                                         </div>
-                                        <div>
-                                            <p>お名前</p>
-                                            <p>{{ $customer->name }}</p>
+                                    </div>
+                                    <div style="max-width: 90%;" class=" mx-auto mt-4">
+                                        <p class="small">要望など</p>
+                                        <div class="box-m">
+                                        <p  class="mx-auto">{{ $customer->demand }}</p>
                                         </div>
+                                    </div>
+                                    <div class="mb-3 mt-4">
+                                        <h6>写真</h6>
+                                    </div>
+                                    @if (!$customer->image == null)
                                         <div>
-                                            <p>よみがな</p>
-                                            <p>{{ $customer->kana }}</p>
+                                            <img width="250" height="250" src="{{ $customer->full_image_url }}">
                                         </div>
-                                        <div>
-                                            <p>ID</p>
-                                            <p>{{ $customer->management_id }}</p>
-                                        </div>
-                                        <div>
-                                            <p>性別</p>
-                                            <p>{{ $customer->sex }}</p>
-                                        </div>
-                                        <div>
-                                            <h1>詳細情報</h1>
-                                        </div>
-                                        <div>
-                                            <p>生年月日</p>
-                                            <p>{{ $customer->birthday }}</p>
-                                        </div>
-                                        <div>
-                                            <p>職業</p>
-                                            <p>{{ $customer->job }}</p>
-                                        </div>
-                                        <div>
-                                            <p>電話番号</p>
-                                            <p>{{ $customer->tel }}</p>
-                                        </div>
-                                        <div>
-                                            <p>メールアドレス</p>
-                                            <p>{{ $customer->email }}</p>
-                                        </div>
-                                        <div>
-                                            <p>来店動機(何が魅力で来店？)</p>
-                                            <p>{{ $customer->motive }}</p>
-                                        </div>
-                                        <div>
-                                            <p>当店をどこで見つけた？</p>
-                                            <p>{{ $customer->where }}</p>
-                                        </div>
-                                        <div>
-                                            <p>メモ</p>
-                                            <p>{{ $customer->memo }}</p>
-                                        </div>
-                                        <div>
-                                            <p>要望など</p>
-                                            <p>{{ $customer->demand }}</p>
-                                        </div>
-                                        <div>
-                                            <h1>写真</h1>
-                                        </div>
-                                        @if (!$customer->image == null)
-                                            <div>
-                                                <img width="250" height="250" src="{{ $customer->full_image_url }}">
-                                            </div>
-                                        @endif
-                                        <div>
-                                            <a href="{{ route('customer.edit', ['id' => $customer->id]) }}"><button
-                                                    type="submit" class="btn btn-primary">
-                                                    編集する
-                                                </button></a>
-                                        </div>
+                                    @endif
+                                    <div class="mb-3 mt-5">
+                                        <a href="{{ route('customer.edit', ['id' => $customer->id]) }}"><button
+                                                type="submit" class="btn btn-primary">
+                                                編集する
+                                            </button></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
 
-                        {{-- 来店記録 --}}
-                        {{-- <div class="card mb-4">
+                    {{-- 来店記録 --}}
+                    {{-- <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
                                 来店記録一覧
@@ -315,20 +203,7 @@
                                 </table>
                             </div>
                         </div> --}}
-                    </div>
-            </main>
-        </div>
-    </div>
-    </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script>
-    <script src="{{ asset('js/scripts.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('assets/demo/chart-area-demo.js') }}"></script>
-    <script src="{{ asset('assets/demo/chart-bar-demo.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/datatables-simple-demo.js') }}"></script>
-</body>
-
-</html>
+                </div>
+            </div>
+    </main>
+@endsection

@@ -175,10 +175,6 @@ a:not([href]):not([class]):hover {
     background-color: #DF1E78;
 }
 
-.i-block {
-    display: inline-block;
-}
-
 pre, code, kbd, samp {
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-size: 1em;
@@ -304,15 +300,6 @@ legend {
     color: #fff;
 }
 
-.box-m {
-    max-height: 200px;
-    /* 横幅を200pxに指定 */
-    border: 1px solid #DEE2E6;
-    /* わかりやすくボーダーを引く */
-    overflow-y: scroll;
-    /* 縦方向にスクロール可能にする */
-}
-
 .card-h {
     color: #fff;
     letter-spacing: .1em;
@@ -385,6 +372,10 @@ h5, .h5 {
 
 h6, .h6 {
     font-size: 0.9rem;
+}
+
+.box-m {
+    max-height: 200px;
 }
 
 .lead {
@@ -1750,14 +1741,14 @@ pre code {
 }
 
 .form-control {
-    display: block;
-    width: 100%;
+    /* display: block;
+    width: 100%; */
     height: calc(1.6em + 0.75rem + 2px);
     padding: 0.375rem 0.75rem;
     font-size: 0.9rem;
     font-weight: 400;
     line-height: 1.6;
-    color: #495057;
+    color: #DF1E78;
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
+use App\Http\Requests\InputCustomerRequest;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
@@ -19,8 +20,16 @@ class AdminCustomerController extends Controller
 
     public function create()
     {
+        $user = Auth::user();
         $customers = Customer::all();
-        return view('admins.customer.create', compact('customers'));
+        return view('admins.customer.create', compact('customers', 'user'));
+    }
+
+    public function customerInput()
+    {
+        $user = Auth::user();
+        $customers = Customer::all();
+        return view('admins.customer.input', compact('customers', 'user'));
     }
 
     public function store(CreateCustomerRequest $request)
@@ -60,20 +69,43 @@ class AdminCustomerController extends Controller
         return redirect()->route('customer.show', ['id' => $customers]);
     }
 
+    public function inputStore(InputCustomerRequest $request)
+    {
+        // POST時に各データを保存
+        $customers = new Customer();
+        $user = Auth::user();
+        $customers->shop_id = $user->shop_id;
+        $customers->name = $request->name;
+        $customers->kana = $request->kana;
+        $customers->sex = $request->sex;
+        $customers->birthday = $request->birthday;
+        $customers->job = $request->job;
+        $customers->tel = $request->tel;
+        $customers->email = $request->email;
+        $customers->motive = $request->motive;
+        $customers->where = $request->where;
+        $customers->demand = $request->demand;
+        $customers->save();
+
+        return redirect()->route('customer.show', ['id' => $customers]);
+    }
+
     public function show($id)
     {
+        $user = Auth::user();
         $customer = Customer::find($id);
         // 生年月日から年齢を算出
         $date_of_birthday = $customer->birthday;
         $age = Carbon::parse($date_of_birthday)->age;
-        return view('admins.customer.show', compact('customer', 'age'));
+        return view('admins.customer.show', compact('customer', 'age', 'user'));
     }
 
     public function edit($id)
     {
+        $user = Auth::user();
         $upError = null;
         $customer = Customer::find($id);
-        return view('admins.customer.edit', compact('customer', 'upError'));
+        return view('admins.customer.edit', compact('customer', 'upError', 'user'));
     }
 
     public function update(UpdateCustomerRequest $request, $id)

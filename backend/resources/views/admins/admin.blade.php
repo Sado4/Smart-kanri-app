@@ -3,7 +3,7 @@
 @section('description', '顧客を管理する店舗管理画面のTOPページ')
 @section('title', '顧客管理画面TOP')
 @section('pageCss')
-
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet" />
 @endsection
 
 @include('layouts.header_nav')
@@ -14,11 +14,6 @@
 <main>
                 <div class="container-fluid px-4">
                     <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
                         <div>
                             <div>
                                 <a href="{{ route('customer.create') }}"><button type="button"
