@@ -38,10 +38,11 @@ Docker 20.10.6(ローカル環境にて使用) / Docker compose(ローカル環�
 
 **その他の使用技術**<br>
 git(gitHub) / Visual Studio Code / SendGrid(メール)<br>
-Adobe XD(画面遷移図) / lucidchart(ER図) / TablePlus(SQLクライアントツール)
+Adobe XD(画面遷移図) / lucidchart(ER図) / Drawio(AWS構成図)
+TablePlus(SQLクライアントツール)
 
 # AWS構成図
-![画像](/readmeFolder/.drawio.png)
+![画像](/readmeFolder/Network.png)
 # DB設計
 ### ・ ER図
 ![画像](/readmeFolder/ERtables.png)
