@@ -59,7 +59,7 @@ class AdminCustomerController extends Controller
             $file = $request->file('image');
             $fileName = $customers->id . '_front_01.jpg';
             // .envで指定したバケット名へ指定したファイル名でファイルをアップロード
-            $upFile = $file->storeAs('', $fileName, 's3');
+            $upFile = $file->storeAs('', $fileName, ['disk' => 's3', 'ACL' => 'public-read']);
             if ($upFile == false) {
                 $upError = 'ファイルのアップロードに失敗しました。';
                 return redirect()->route('customer.edit', ['id' => $customers], compact('upError'));
