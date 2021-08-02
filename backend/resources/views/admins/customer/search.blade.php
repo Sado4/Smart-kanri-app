@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('description', '顧客検索後のページ')
-@section('title', '検索-顧客管理画面TOP')
+@section('title', '顧客検索')
 @section('pageCss')
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet" />
 @endsection

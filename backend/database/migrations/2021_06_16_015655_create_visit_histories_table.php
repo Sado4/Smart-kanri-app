@@ -18,9 +18,9 @@ class CreateVisitHistoriesTable extends Migration
             $table->unsignedBigInteger('shop_id');
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('menu_id');
-            $table->dateTime('date');
-            $table->integer('price');
+            $table->unsignedBigInteger('menu_id')->nullable();
+            $table->date('date');
+            $table->integer('price')->nullable();
             $table->text('memo')->nullable();
 
             $table->timestamps();

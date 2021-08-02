@@ -8,6 +8,8 @@ use App\Http\Requests\CreateCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Http\Requests\InputCustomerRequest;
 use App\Models\Customer;
+use App\Models\Shop;
+use App\Models\VisitHistory;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
@@ -97,7 +99,10 @@ class AdminCustomerController extends Controller
         // 生年月日から年齢を算出
         $date_of_birthday = $customer->birthday;
         $age = Carbon::parse($date_of_birthday)->age;
-        return view('admins.customer.show', compact('customer', 'age', 'user'));
+
+        // 現在表示している顧客の来店履歴の取得
+        $visits = VisitHistory::where('customer_id', $id)->where('shop_id', $user->shop_id)->latest('date')->get();
+        return view('admins.customer.show', compact('customer', 'age', 'user', 'visits'));
     }
 
     public function edit($id)

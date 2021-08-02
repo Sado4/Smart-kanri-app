@@ -47,7 +47,14 @@ Route::post('/admin/customer/{id}/update', 'AdminCustomerController@update')->na
 Route::post('/admin/customer/{id}/delete', 'AdminCustomerController@fileDelete')->name('file.delete');
 Route::post('/admin/customer/destroy/{id}', 'AdminCustomerController@destroy')->name('customer.destroy');
 
-// Route::get('/admin/visits', 'AdminVisitsController@index');
+Route::get('/admin/visit/', 'AdminVisitsController@index')->name('visit.index');
+Route::get('/admin/visit/{id}', 'AdminVisitsController@create')->name('visit.create');
+Route::post('/admin/visit/{id}/create', 'AdminVisitsController@store')->name('visit.store');
+Route::get('/admin/visit/{id}/show', 'AdminVisitsController@show')->name('visit.show');
+
+Route::get('/admin/visit/{id}/edit', 'AdminVisitsController@edit')->name('visit.edit');
+Route::post('/admin/visit/{id}/update', 'AdminVisitsController@update')->name('visit.update');
+Route::post('/admin/visit/destroy/{id}', 'AdminVisitsController@destroy')->name('visit.destroy');
 
 Route::get('/admin/settings/profile', 'AdminSettingsProfileController@show')->name('profile.show');
 Route::post('/admin/settings/profile/update', 'AdminSettingsProfileController@update')->name('profile.update');

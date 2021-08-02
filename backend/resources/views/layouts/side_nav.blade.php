@@ -10,7 +10,7 @@
                             <div class="sb-nav-link-icon"><i class="bi bi-people"></i></div>
                             顧客情報一覧
                         </a>
-                        <a class="nav-link" href="{{ route('admin') }}">
+                        <a class="nav-link" href="{{ route('visit.index') }}">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             来店記録一覧
                         </a>

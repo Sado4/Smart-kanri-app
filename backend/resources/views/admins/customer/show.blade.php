@@ -36,6 +36,12 @@
                                     <p class="i-block mr-2">{{ $customer->sex }}</p>
                                     <p class="i-block ml-2">{{ $age }}歳</p>
                                 </div>
+                                <div class="mb-4">
+                                    <a href="{{ route('visit.create', ['id' => $customer->id]) }}"><button type="submit"
+                                            class="btn btn-primary card-h">
+                                            来店記録を追加
+                                        </button></a>
+                                </div>
 
                                 {{-- <div>
                                     <div>
@@ -94,24 +100,24 @@
                                         <p class="mx-auto border-bottom">{{ $customer->birthday }}</p>
                                     </div>
                                     <div style="max-width: 90%;" class=" mx-auto mt-4">
-                                    <p class="small">職業</p>
-                                        <p  class="mx-auto border-bottom">{{ $customer->job }}</p>
+                                        <p class="small">職業</p>
+                                        <p class="mx-auto border-bottom">{{ $customer->job }}</p>
                                     </div>
                                     <div style="max-width: 90%;" class=" mx-auto mt-4">
                                         <p class="small">電話番号</p>
-                                        <p  class="mx-auto border-bottom">{{ $customer->tel }}</p>
+                                        <p class="mx-auto border-bottom">{{ $customer->tel }}</p>
                                     </div>
                                     <div style="max-width: 90%;" class=" mx-auto mt-4">
                                         <p class="small">メールアドレス</p>
-                                        <p  class="mx-auto border-bottom">{{ $customer->email }}</p>
+                                        <p class="mx-auto border-bottom">{{ $customer->email }}</p>
                                     </div>
                                     <div style="max-width: 90%;" class=" mx-auto mt-4">
                                         <p class="small">来店動機(何が魅力で来店？)</p>
-                                        <p  class="mx-auto border-bottom">{{ $customer->motive }}</p>
+                                        <p class="mx-auto border-bottom">{{ $customer->motive }}</p>
                                     </div>
                                     <div style="max-width: 90%;" class=" mx-auto mt-4">
                                         <p class="small">当店をどこで見つけた？</p>
-                                        <p  class="mx-auto border-bottom">{{ $customer->where }}</p>
+                                        <p class="mx-auto border-bottom">{{ $customer->where }}</p>
                                     </div>
                                     <div style="max-width: 90%;" class="mt-4 mx-auto">
                                         <p class="small">メモ</p>
@@ -122,7 +128,7 @@
                                     <div style="max-width: 90%;" class=" mx-auto mt-4">
                                         <p class="small">要望など</p>
                                         <div class="box-m">
-                                        <p  class="mx-auto">{{ $customer->demand }}</p>
+                                            <p class="mx-auto">{{ $customer->demand }}</p>
                                         </div>
                                     </div>
                                     <div class="mb-3 mt-4">
@@ -146,63 +152,50 @@
 
 
                     {{-- 来店記録 --}}
-                    {{-- <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                来店記録一覧
-                            </div>
-
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
+                    <div class="card mb-4 mt-5">
+                        <div class="card-header change-h">
+                            <i class="fas fa-table me-1 white-color"></i>
+                            <span class="white-color">来店履歴</span>
+                        </div>
+                        <div class="card-body">
+                            <table id="datatablesSimple" class="link">
+                                <thead>
+                                    <tr>
+                                        <th><span class="login-button">日時</span></th>
+                                        <th><span class="login-button">顧客名</span></th>
+                                        <th><span class="login-button">担当者</span></th>
+                                        <th><span class="login-button">メモ</span></th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th><span class="login-button">日時</span></th>
+                                        <th><span class="login-button">顧客名</span></th>
+                                        <th><span class="login-button">担当者</span></th>
+                                        <th><span class="login-button">メモ</span></th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    @foreach ($visits as $visit)
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <td><a class="link"
+                                                    href="{{ route('visit.show', ['id' => $visit->id]) }}">{{ $visit->date }}</a>
+                                            </td>
+                                            <td><a class="link"
+                                                    href="{{ route('visit.show', ['id' => $visit->id]) }}">{{ $customer->name }}</a>
+                                            </td>
+                                            <td><a class="link"
+                                                    href="{{ route('visit.show', ['id' => $visit->id]) }}">{{ $visit->user->name }}</a>
+                                            </td>
+                                            <td><a class="link"
+                                                    href="{{ route('visit.show', ['id' => $visit->id]) }}">{{ $visit->memo }}</a>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td>$170,750</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td>2009/01/12</td>
-                                            <td>$86,000</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div> --}}
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
     </main>

@@ -35,9 +35,9 @@ class RegisterSetupNewController extends Controller
         // 店舗の作成
         $shop = new Shop();
         $shop->name = $request->shop_name;
-        $shop->sector_id = $request->sector_id;
+        $shop->sector_id = $request->id;
         $shop->save();
-        
+
         // ログインしているユーザーの特定
         $user = Auth::user();
         $user->shop_id = $shop->id;
