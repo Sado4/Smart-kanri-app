@@ -171,6 +171,15 @@ a:not([href]):not([class]):hover {
     letter-spacing: .1em;
 }
 
+.td-layout {
+    vertical-align: top;
+    padding: 0.5rem 0.5rem;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .change-h {
     background-color: #DF1E78;
 }

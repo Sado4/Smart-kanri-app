@@ -115,7 +115,7 @@
                                             <p>②業種選択</p>
                                             <div>
                                                 <label class="small my-1 mr-2" for="sector">業種</label>
-                                                <select class="form-control custom-select my-1 mr-sm-2" id="sector">
+                                                <select name="id" class="form-control custom-select my-1 mr-sm-2" id="sector">
                                                     @foreach ($sectors as $sector)
                                                         <option value="{{ $sector->id }}">
                                                             {{ $sector->name }}

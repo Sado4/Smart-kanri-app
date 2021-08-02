@@ -390,6 +390,15 @@ legend {
     line-height: inherit;
 }
 
+.td-layout {
+    vertical-align: top;
+    padding: 0.5rem 0.5rem;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 @media (min-width: 1200px) {
     legend {
         font-size: 1.5rem;
@@ -10515,6 +10524,12 @@ html, body {
 .dataTable-table>tbody>tr>td, .dataTable-table>tbody>tr>th, .dataTable-table>tfoot>tr>td, .dataTable-table>tfoot>tr>th, .dataTable-table>thead>tr>td, .dataTable-table>thead>tr>th {
     vertical-align: top;
     padding: 0.5rem 0.5rem;
+    vertical-align: top;
+    padding: 0.5rem 0.5rem;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .dataTable-table>thead>tr>th {
