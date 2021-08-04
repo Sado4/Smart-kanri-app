@@ -1,4 +1,4 @@
-<a href="{{ config('app.url') }}">{{ config('app.name') }}</a>
+<a href="{{ route('top') }}">{{ config('app.name') }}</a>
 <p>
     {{ __('下記のURLをクリックして新しいメールアドレスを確定してください。') }}<br>
 </p>
