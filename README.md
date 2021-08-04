@@ -27,7 +27,7 @@
 ### ●店舗管理画面の基本操作</br>
 ※ログイン後(ユーザー登録必須)</br>
 
-①新規で顧客情報を作成する。
+①新規で顧客情報を作成する。</br>
 ②希望の条件(日時や乗車人数)で検索</br>
 ③該当したオーナーとチャットでの交流</br>
 ④車両を借りることへの不安がなくなれば、契約を結んでもらえるようオーナーへ依頼</br>
@@ -47,8 +47,8 @@ Docker 20.10.6(ローカル環境にて使用) / Docker compose(ローカル環�
 
 
 **その他の使用技術**<br>
-git(gitHub) / Visual Studio Code / SendGrid(メール)<br>
-Adobe XD(画面遷移図) / lucidchart(ER図) / Drawio(AWS構成図)<br>
+git(gitHub) / Visual Studio Code / SendGrid(メール)</br>
+Adobe XD(画面遷移図) / lucidchart(ER図) / Drawio(AWS構成図)</br>
 TablePlus(SQLクライアントツール)
 
 # AWS構成図

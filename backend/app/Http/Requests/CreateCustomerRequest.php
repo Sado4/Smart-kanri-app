@@ -27,7 +27,7 @@ class CreateCustomerRequest extends FormRequest
         return [
             'name' => 'required|max:50',
             'kana' => 'required|max:50',
-            'management_id' => 'required|min:1|numeric|unique:customers,management_id',
+            'management_id' => 'required|min:1|max:9000000000000000000|numeric|unique:customers,management_id',
             'birthday' => 'date_format:"Y-m-d"|before:today|nullable',
             'job' => 'max:50|nullable',
             'tel' => 'numeric|digits_between:8,11|nullable',
@@ -49,6 +49,7 @@ class CreateCustomerRequest extends FormRequest
             "kana.max" => "よみがなは50文字以下で入力して下さい",
             "management_id.required" => "idは入力必須項目です",
             "management_id.min" => "idは整数の1以上で入力して下さい",
+            "management_id.max" => "idは整数の9000000000000000000以下で入力して下さい",
             "management_id.numeric" => "idは数字で入力して下さい",
             "management_id.unique" => "既に同じidが作成されているため、違うidを入力してください",
             "date_format" => "年月日を正しい形で入力して下さい",
