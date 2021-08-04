@@ -116,10 +116,10 @@
                                     <div class="col-md-6">
                                         @if (count($errors) == 0 || !$errors->has('job'))
                                             <input id="job" class="form-control" type="text" name="job"
-                                                value="{{ old('job') }}">
+                                                value="{{ old('job') }}" placeholder="例: 美容師">
                                         @else
                                             <input id="job" class="form-control is-invalid" type="text" name="job"
-                                                value="{{ old('job') }}">
+                                                value="{{ old('job') }}" placeholder="例: 美容師">
                                         @endif
 
                                         @if (count($errors) > 0)
@@ -136,10 +136,10 @@
                                     <div class="col-md-6">
                                         @if (count($errors) == 0 || !$errors->has('tel'))
                                             <input id="tel" class="form-control" type="text" name="tel"
-                                                value="{{ old('tel') }}">
+                                                value="{{ old('tel') }}" placeholder="※ハイフン無し">
                                         @else
                                             <input id="tel" class="form-control is-invalid" type="tel" name="tel"
-                                                value="{{ old('tel') }}">
+                                                value="{{ old('tel') }}" placeholder="※ハイフン無し">
                                         @endif
 
                                         @if (count($errors) > 0)
@@ -156,10 +156,10 @@
                                     <div class="col-md-6">
                                         @if (count($errors) == 0 || !$errors->has('email'))
                                             <input id="email" class="form-control" type="text" name="email"
-                                                value="{{ old('email') }}">
+                                                value="{{ old('email') }}" placeholder="例: hanako@example.com">
                                         @else
                                             <input id="email" class="form-control is-invalid" type="email" name="email"
-                                                value="{{ old('email') }}">
+                                                value="{{ old('email') }}" placeholder="例: hanako@example.com">
                                         @endif
 
                                         @if (count($errors) > 0)

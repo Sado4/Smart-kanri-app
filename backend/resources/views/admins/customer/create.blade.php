@@ -14,8 +14,8 @@
 @section('content')
     <div class="text-center pt-4 mb-4">
         <a class="card-h" href="{{ route('customer.input') }}"><button type="submit" class="btn btn-primary">
-            <span>{{ __('お客様入力専用ページへ') }}</span>
-        </button></a>
+                <span>{{ __('お客様入力専用ページへ') }}</span>
+            </button></a>
     </div>
 
     <main class="py-4">
@@ -144,10 +144,10 @@
                                     <div class="col-md-6">
                                         @if (count($errors) == 0 || !$errors->has('job'))
                                             <input id="job" class="form-control" type="text" name="job"
-                                                value="{{ old('job') }}">
+                                                value="{{ old('job') }}" placeholder="例: 美容師">
                                         @else
                                             <input id="job" class="form-control is-invalid" type="text" name="job"
-                                                value="{{ old('job') }}">
+                                                value="{{ old('job') }}" placeholder="例: 美容師">
                                         @endif
 
                                         @if (count($errors) > 0)
@@ -164,10 +164,10 @@
                                     <div class="col-md-6">
                                         @if (count($errors) == 0 || !$errors->has('tel'))
                                             <input id="tel" class="form-control" type="text" name="tel"
-                                                value="{{ old('tel') }}">
+                                                value="{{ old('tel') }}" placeholder="※ハイフン無し">
                                         @else
                                             <input id="tel" class="form-control is-invalid" type="tel" name="tel"
-                                                value="{{ old('tel') }}">
+                                                value="{{ old('tel') }}" placeholder="※ハイフン無し">
                                         @endif
 
                                         @if (count($errors) > 0)
@@ -184,10 +184,10 @@
                                     <div class="col-md-6">
                                         @if (count($errors) == 0 || !$errors->has('email'))
                                             <input id="email" class="form-control" type="text" name="email"
-                                                value="{{ old('email') }}">
+                                                value="{{ old('email') }}" placeholder="例: hanako@example.com">
                                         @else
                                             <input id="email" class="form-control is-invalid" type="email" name="email"
-                                                value="{{ old('email') }}">
+                                                value="{{ old('email') }}" placeholder="例: hanako@example.com">
                                         @endif
 
                                         @if (count($errors) > 0)
@@ -247,8 +247,8 @@
                                             <textarea rows="4" id="memo" class="form-control" type="text" name="memo"
                                                 value="{{ old('memo') }}">{{ old('memo') }}</textarea>
                                         @else
-                                            <textarea rows="4" id="memo" class="form-control is-invalid" type="text" name="memo"
-                                                value="{{ old('memo') }}">{{ old('memo') }}</textarea>
+                                            <textarea rows="4" id="memo" class="form-control is-invalid" type="text"
+                                                name="memo" value="{{ old('memo') }}">{{ old('memo') }}</textarea>
                                         @endif
 
                                         @if (count($errors) > 0)
@@ -268,7 +268,8 @@
                                             <textarea rows="4" id="demand" class="form-control" type="text" name="demand"
                                                 value="{{ old('demand') }}">{{ old('demand') }}</textarea>
                                         @else
-                                            <textarea rows="4" id="demand" class="form-control is-invalid" type="text" name="demand"
+                                            <textarea rows="4" id="demand" class="form-control is-invalid" type="text"
+                                                name="demand"
                                                 value="{{ old('demand') }}">{{ old('demand') }}</textarea>
                                         @endif
 

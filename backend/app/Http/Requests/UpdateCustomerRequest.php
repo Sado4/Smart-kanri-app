@@ -27,7 +27,7 @@ class UpdateCustomerRequest extends FormRequest
         return [
             'name' => 'required|max:50',
             'kana' => 'required|max:50',
-            'management_id' => 'required|min:1|numeric|',
+            'management_id' => 'required|min:1|max:9000000000000000000|numeric|',
             'management_id' => ['required', Rule::unique('customers')->ignore($this->id)],
             'birthday' => 'date_format:"Y-m-d"|before:today|nullable',
             'job' => 'max:50|nullable',
@@ -50,6 +50,7 @@ class UpdateCustomerRequest extends FormRequest
             "kana.max" => "よみがなは50文字以下で入力して下さい",
             "management_id.required" => "idは入力必須項目です",
             "management_id.min" => "idは整数の1以上で入力して下さい",
+            "management_id.max" => "idは整数の9000000000000000000以下で入力して下さい",
             "management_id.numeric" => "idは数字で入力して下さい",
             "unique" => "既に同じIDが作成されているため、違うIDを入力してください",
             "date_format" => "年月日を正しい形で入力して下さい",
