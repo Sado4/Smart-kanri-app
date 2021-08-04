@@ -19,7 +19,11 @@ class AdminController extends Controller
 
     public function index(Request $request)
     {
+       // 店舗登録していない状態で、URL直打ちでadmin～にリクエストが来た場合はリダイレクト。
         $user = Auth::user();
+        if($user->shop_id === NULL) {
+            return redirect()->route('setup.index');
+        }
         // ログインしているユーザのshop情報を取り出せるように
         $shop = Shop::find($user->shop_id);
         // 現在の店舗に登録している顧客情報の取得
