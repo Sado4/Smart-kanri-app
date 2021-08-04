@@ -13,17 +13,17 @@ class ShopTableSeeder extends Seeder
     public function run()
     {
         DB::table('shops')->insert([
-            'name' => 'テスト店舗',
+            'name' => 'サンプル店舗',
             'sector_id' => '1',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
 
-        DB::table('shops')->insert([
-            'name' => 'テスト店舗２',
-            'sector_id' => '1',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
+        // DB::table('shops')->insert([
+        //     'name' => 'テスト店舗２',
+        //     'sector_id' => '1',
+        //     'created_at' => date('Y-m-d H:i:s'),
+        //     'updated_at' => date('Y-m-d H:i:s'),
+        // ]);
     }
 }
