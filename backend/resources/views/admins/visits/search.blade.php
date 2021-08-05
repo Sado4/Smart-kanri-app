@@ -23,7 +23,7 @@
                         <div class="form-group">
                             <label text-md-right for="date">日時</label>
                             <div class="mb-3 form_deco">
-                                <input class="form-control" type="search" name="date" id="date" placeholder="検索"
+                                <input class="form-control" type="date" name="date" id="date" placeholder="検索"
                                     aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                             </div>
 
