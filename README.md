@@ -81,7 +81,7 @@ Adobe XD(画面遷移図) / lucidchart(ER図) / Drawio(AWS構成図)</br>
 TablePlus(SQLクライアントツール)
 
 # AWS構成図
-![画像](/readmeFolder/network.png)
+![画像](/readmeFolder/AWS.png)
 
 # DB設計
 ### ・ ER図
