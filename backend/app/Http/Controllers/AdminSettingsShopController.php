@@ -17,6 +17,10 @@ class AdminSettingsShopController extends Controller
     public function setting()
     {
         $user = Auth::user();
+        // 店舗登録していない状態で、URL直打ちでadmin～にリクエストが来た場合はリダイレクト。
+        if ($user->shop_id === NULL) {
+            return redirect()->route('setup.index');
+        }
         return view('admins.settings.shop.index', compact('user'));
     }
 

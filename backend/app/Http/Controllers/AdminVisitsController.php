@@ -24,6 +24,10 @@ class AdminVisitsController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
+        // 店舗登録していない状態で、URL直打ちでadmin～にリクエストが来た場合はリダイレクト。
+        if ($user->shop_id === NULL) {
+            return redirect()->route('setup.index');
+        }
         // ログインしているユーザのshop情報を取り出せるように
         $shop = Shop::find($user->shop_id);
         // 現在の店舗に登録している来店履歴の情報の取得
@@ -57,6 +61,10 @@ class AdminVisitsController extends Controller
     public function create($id)
     {
         $user = Auth::user();
+        // 店舗登録していない状態で、URL直打ちでadmin～にリクエストが来た場合はリダイレクト。
+        if ($user->shop_id === NULL) {
+            return redirect()->route('setup.index');
+        }
         // ログインしているユーザの店舗を特定
         $shop = Shop::find($user->shop_id);
         // ログインしている店舗のユーザ情報をすべて取得
@@ -89,6 +97,10 @@ class AdminVisitsController extends Controller
     public function show($id)
     {
         $user = Auth::user();
+        // 店舗登録していない状態で、URL直打ちでadmin～にリクエストが来た場合はリダイレクト。
+        if ($user->shop_id === NULL) {
+            return redirect()->route('setup.index');
+        }
         $visit = VisitHistory::find($id);
         return view('admins.visits.show', compact('visit', 'user'));
     }
@@ -96,6 +108,10 @@ class AdminVisitsController extends Controller
     public function edit($id)
     {
         $user = Auth::user();
+        // 店舗登録していない状態で、URL直打ちでadmin～にリクエストが来た場合はリダイレクト。
+        if ($user->shop_id === NULL) {
+            return redirect()->route('setup.index');
+        }
         // ログインしているユーザの店舗を特定
         $shop = Shop::find($user->shop_id);
         // ログインしている店舗のユーザ情報をすべて取得

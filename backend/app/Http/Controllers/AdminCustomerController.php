@@ -23,6 +23,10 @@ class AdminCustomerController extends Controller
     public function create()
     {
         $user = Auth::user();
+        // 店舗登録していない状態で、URL直打ちでadmin～にリクエストが来た場合はリダイレクト。
+        if ($user->shop_id === NULL) {
+            return redirect()->route('setup.index');
+        }
         $customers = Customer::all();
         return view('admins.customer.create', compact('customers', 'user'));
     }
@@ -30,6 +34,10 @@ class AdminCustomerController extends Controller
     public function customerInput()
     {
         $user = Auth::user();
+        // 店舗登録していない状態で、URL直打ちでadmin～にリクエストが来た場合はリダイレクト。
+        if ($user->shop_id === NULL) {
+            return redirect()->route('setup.index');
+        }
         $customers = Customer::all();
         return view('admins.customer.input', compact('customers', 'user'));
     }
@@ -95,6 +103,10 @@ class AdminCustomerController extends Controller
     public function show($id)
     {
         $user = Auth::user();
+        // 店舗登録していない状態で、URL直打ちでadmin～にリクエストが来た場合はリダイレクト。
+        if ($user->shop_id === NULL) {
+            return redirect()->route('setup.index');
+        }
         $customer = Customer::find($id);
         // 生年月日から年齢を算出
         $date_of_birthday = $customer->birthday;
@@ -108,6 +120,10 @@ class AdminCustomerController extends Controller
     public function edit($id)
     {
         $user = Auth::user();
+        // 店舗登録していない状態で、URL直打ちでadmin～にリクエストが来た場合はリダイレクト。
+        if ($user->shop_id === NULL) {
+            return redirect()->route('setup.index');
+        }
         $upError = null;
         $customer = Customer::find($id);
         return view('admins.customer.edit', compact('customer', 'upError', 'user'));
