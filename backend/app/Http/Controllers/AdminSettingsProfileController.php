@@ -24,12 +24,20 @@ class AdminSettingsProfileController extends Controller
     public function show()
     {
         $user = Auth::user();
+        // 店舗登録していない状態で、URL直打ちでadmin～にリクエストが来た場合はリダイレクト。
+        if ($user->shop_id === NULL) {
+            return redirect()->route('setup.index');
+        }
         return view('admins.settings.profile.profile', compact('user'));
     }
 
     public function edit()
     {
         $user = Auth::user();
+        // 店舗登録していない状態で、URL直打ちでadmin～にリクエストが来た場合はリダイレクト。
+        if ($user->shop_id === NULL) {
+            return redirect()->route('setup.index');
+        }
         return view('admins.settings.profile.email', compact('user'));
     }
 

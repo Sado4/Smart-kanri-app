@@ -17,6 +17,10 @@ class AdminSettingsStaffController extends Controller
     public function index()
     {
         $user = Auth::user();
+        // 店舗登録していない状態で、URL直打ちでadmin～にリクエストが来た場合はリダイレクト。
+        if ($user->shop_id === NULL) {
+            return redirect()->route('setup.index');
+        }
         // ログインしているユーザの店舗を特定
         $shop = Shop::find($user->shop_id);
         // ログインしている店舗のユーザ情報をすべて取得
