@@ -97,7 +97,20 @@ class AdminCustomerController extends Controller
         $customers->demand = $request->demand;
         $customers->save();
 
-        return redirect()->route('customer.show', ['id' => $customers]);
+        // return redirect()->route('customer.show', ['id' => $customers]);
+        return redirect()->route('input.completed', ['id' => $customers]);
+    }
+
+    public function inputCompleted($id)
+    {
+        $user = Auth::user();
+        // 店舗登録していない状態で、URL直打ちでadmin～にリクエストが来た場合はリダイレクト。
+        if ($user->shop_id === NULL) {
+            return redirect()->route('setup.index');
+        }
+
+        $customer = Customer::find($id);
+        return view('admins.customer.input.completed', compact('user', 'id', 'customer'));
     }
 
     public function show($id)

@@ -41,6 +41,7 @@ Route::get('/admin/customer/input', 'AdminCustomerController@customerInput')->na
 Route::post('/admin/customer/', 'AdminCustomerController@store')->name('customer.store');
 Route::post('/admin/customer/input', 'AdminCustomerController@inputStore')->name('input.store');
 Route::get('/admin/customer/{id}', 'AdminCustomerController@show')->name('customer.show');
+Route::get('/admin/customer/input/completed/{id}', 'AdminCustomerController@inputCompleted')->name('input.completed');
 
 Route::get('/admin/customer/{id}/edit', 'AdminCustomerController@edit')->name('customer.edit');
 Route::post('/admin/customer/{id}/update', 'AdminCustomerController@update')->name('customer.update');
