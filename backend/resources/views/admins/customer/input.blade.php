@@ -230,6 +230,8 @@
                                     </div>
                                 </div>
 
+                                <div class="mt-5"><p>※入力した情報を確認して問題なければ、完了ボタンを押してください。</p></div>
+
                                 <div class="text-center mt-5 mb-4">
                                     <button style="width: 150px;" type="submit" class="btn btn-primary">
                                         <span>{{ __('完了') }}</span>
