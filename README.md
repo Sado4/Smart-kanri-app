@@ -19,7 +19,7 @@
 
 ※アプリの作成にあたって、より詳しく下記Qiitaの記事に投稿させて頂きましたので、ご覧頂けますと幸いです。</br>
 
-▶︎ [Qiita 記事](ここにリンク)</br>
+▶︎ [Qiita 記事](https://qiita.com/derasado/items/ed8b22881c8bc1f28c21)</br>
 
 
 
