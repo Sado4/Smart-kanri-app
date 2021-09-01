@@ -12,6 +12,7 @@ use App\Models\Shop;
 use App\Models\VisitHistory;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class AdminCustomerController extends Controller
 {

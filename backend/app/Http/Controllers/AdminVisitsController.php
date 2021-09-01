@@ -10,6 +10,7 @@ use App\Models\Customer;
 use App\Models\User;
 use App\Models\VisitHistory;
 use App\Models\Shop;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -39,7 +40,7 @@ class AdminVisitsController extends Controller
 
             $query = VisitHistory::query();
             // 検索された値を変数に保存
-            $date= $request->date;
+            $date = $request->date;
             $memo = $request->memo;
 
             //検索ワード引っかかったものだけを取得
