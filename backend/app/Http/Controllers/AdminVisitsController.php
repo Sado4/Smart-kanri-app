@@ -32,7 +32,8 @@ class AdminVisitsController extends Controller
         // ログインしているユーザのshop情報を取り出せるように
         $shop = Shop::find($user->shop_id);
         // 現在の店舗に登録している来店履歴の情報の取得
-        $visits = VisitHistory::where('shop_id', $shop->id)->latest('date')->latest('updated_at')->get();
+
+        $visits = VisitHistory::where('shop_id', $shop->id)->with(['user', 'customer'])->latest('date')->latest('updated_at')->get();
 
         // 検索された場合
         $submit = $request->submit;
