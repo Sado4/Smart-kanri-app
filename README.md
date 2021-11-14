@@ -127,6 +127,5 @@ TablePlus(SQLクライアントツール)
 大変お忙しい中、最後までご覧いただき誠にありがとうございました。<br>
 ご興味を持っていただけましたら、下記リンクもご覧頂けると幸いです。<br>
 
-[→  [自己紹介Wantedly](https://www.wantedly.com/id/satoshi_kitagawa_s): 学歴・職務経歴・webエンジニアを目指す経緯などを記載しています！]</br>
 [→  [Qiita記事](https://qiita.com/derasado/items/ed8b22881c8bc1f28c21): 今回作成したPFの背景や、苦労した点、アプリ作成に至るまでの学習内容についてまとめた記事です。]</br>
 [→  [Twitter](https://twitter.com/derasado): これまで約半年間日々の学習を記録・発信してきました！]</br>
